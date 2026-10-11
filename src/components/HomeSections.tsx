@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Quote } from "lucide-react";
-import { projects } from "@/lib/projects";
+import { projects, projectSrcSet } from "@/lib/projects";
 import { clients, testimonials } from "@/lib/trust";
 
 /** "Our work" teaser: first four project photos linking to /projects. */
@@ -26,7 +26,11 @@ export function ProjectsTeaser() {
               className="group relative aspect-[4/5] overflow-hidden rounded-xl bg-navy-100"
             >
               <img
-                src={p.image}
+                src={p.imageSmall}
+                srcSet={projectSrcSet(p)}
+                sizes="(min-width: 1024px) 300px, 50vw"
+                width={800}
+                height={600}
                 alt={p.title}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

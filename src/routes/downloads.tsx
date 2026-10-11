@@ -33,7 +33,7 @@ const C = {
   teal:   "#00B4A0",
   cream:  "#F8F7F4",
   muted:  "#94A3B8",
-  textSm: "#64748B",
+  textSm: "#5B6A80",
 } as const;
 
 const STYLES = `
@@ -285,7 +285,7 @@ function DownloadsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div style={{ fontFamily: "'Inter', sans-serif", background: C.dark, minHeight: "100vh" }}>
+      <div style={{ fontFamily: "var(--font-body)", background: C.dark, minHeight: "100vh" }}>
 
         {/* Password modal */}
         {passwordModal && (
@@ -297,7 +297,7 @@ function DownloadsPage() {
         )}
 
         {/* ── HERO ── */}
-        <section style={{ background: C.dark, padding: "clamp(3rem,5vw,4rem) clamp(1.5rem,5vw,4rem) clamp(3rem,5vw,4.5rem)", position: "relative", overflow: "hidden" }}>
+        <section className="cp-on-dark" style={{ background: C.dark, padding: "clamp(3rem,5vw,4rem) clamp(1.5rem,5vw,4rem) clamp(3rem,5vw,4.5rem)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 70% at 30% 50%, rgba(0,180,160,0.05) 0%, transparent 65%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto" }}>
             <span className="cp-eyebrow" style={{ color: C.teal }}>Resource library</span>

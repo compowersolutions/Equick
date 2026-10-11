@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, X, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { projects, type ProjectCategory } from "@/lib/projects";
+import { projects, projectSrcSet, type ProjectCategory } from "@/lib/projects";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -84,7 +84,11 @@ function ProjectsPage() {
               >
                 <div className="aspect-[4/3] overflow-hidden bg-navy-100">
                   <img
-                    src={p.image}
+                    src={p.imageSmall}
+                    srcSet={projectSrcSet(p)}
+                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                    width={800}
+                    height={600}
                     alt={p.title}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -94,7 +98,7 @@ function ProjectsPage() {
                   <span className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-teal-600">
                     {p.category}
                   </span>
-                  <h3 className="font-display mt-1 text-lg text-navy-950">{p.title}</h3>
+                  <h2 className="mt-1 text-lg font-extrabold uppercase tracking-tight text-navy-950">{p.title}</h2>
                   <p className="mt-1.5 text-sm leading-relaxed text-navy-400">{p.description}</p>
                   {p.location && (
                     <p className="mt-2 flex items-center gap-1 text-xs text-navy-400">

@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Monitor, ClipboardList, UtensilsCrossed, Boxes, Users, ArrowRight } from "lucide-react";
-import dashboardImg from "@/assets/restassure_dashboard.jpg";
-import posImg from "@/assets/restassure_pos.jpg";
-import tablesImg from "@/assets/restassure_tables.jpg";
+import dashboardImg from "@/assets/restassure_dashboard.webp";
+import posImg from "@/assets/restassure_pos.webp";
+import tablesImg from "@/assets/restassure_tables.webp";
 
 export const Route = createFileRoute("/restassure")({
   head: () => ({
@@ -27,7 +27,7 @@ const C = {
   tealD:  "#009B89",
   teal10: "rgba(0,180,160,0.1)",
   muted:  "#94A3B8",
-  textSm: "#64748B",
+  textSm: "#5B6A80",
   cream:  "#F8F7F4",
 } as const;
 
@@ -122,10 +122,10 @@ function RestAssurePage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div style={{ fontFamily: "var(--font-body)" }}>
 
         {/* ── HERO ── */}
-        <section style={{ background: C.dark, padding: "clamp(3rem,5vw,4rem) clamp(1.5rem,5vw,4rem) clamp(3.5rem,6vw,5rem)", position: "relative", overflow: "hidden" }}>
+        <section className="cp-on-dark" style={{ background: C.dark, padding: "clamp(3rem,5vw,4rem) clamp(1.5rem,5vw,4rem) clamp(3.5rem,6vw,5rem)", position: "relative", overflow: "hidden" }}>
           {/* Teal glow — distinct from the blue power pages */}
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 70% 50%, rgba(0,180,160,0.07) 0%, transparent 60%)", pointerEvents: "none" }} />
 
@@ -165,7 +165,7 @@ function RestAssurePage() {
         </section>
 
         {/* ── MODULES ── */}
-        <section style={{ background: C.dark, padding: "2.5rem clamp(1.5rem,5vw,4rem)" }}>
+        <section className="cp-on-dark" style={{ background: C.dark, padding: "2.5rem clamp(1.5rem,5vw,4rem)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
               <span className="cp-eyebrow cp-eyebrow--center">Everything in one system</span>
@@ -212,7 +212,7 @@ function RestAssurePage() {
         </section>
 
         {/* ── KEY FEATURES ── */}
-        <section style={{ background: C.dark2, padding: "2.5rem clamp(1.5rem,5vw,4rem)" }}>
+        <section className="cp-on-dark" style={{ background: C.dark2, padding: "2.5rem clamp(1.5rem,5vw,4rem)" }}>
           <div style={{ maxWidth: "720px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
               <span className="cp-eyebrow cp-eyebrow--blue cp-eyebrow--center">Key features</span>
@@ -232,7 +232,7 @@ function RestAssurePage() {
         </section>
 
         {/* ── CTA ── */}
-        <section style={{ background: C.dark, padding: "2.5rem clamp(1.5rem,5vw,4rem)", position: "relative", overflow: "hidden" }}>
+        <section className="cp-on-dark" style={{ background: C.dark, padding: "2.5rem clamp(1.5rem,5vw,4rem)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(0,180,160,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
             <span className="cp-eyebrow cp-eyebrow--center">Ready to streamline?</span>

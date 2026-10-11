@@ -29,7 +29,7 @@ const C = {
   blueD:  "#1E4F8C",
   teal:   "#00B4A0",
   muted:  "#94A3B8",
-  textSm: "#64748B",
+  textSm: "#5B6A80",
 } as const;
 
 const STYLES = `
@@ -245,7 +245,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
   }
 
   return (
-    <div style={{ background: C.dark, minHeight: "calc(100vh - 4rem)", fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ background: C.dark, minHeight: "calc(100vh - 4rem)", fontFamily: "var(--font-body)" }}>
 
       {/* Header */}
       <div style={{ background: C.dark2, borderBottom: `1px solid ${C.border}`, padding: "1rem clamp(1.5rem,5vw,4rem)" }}>

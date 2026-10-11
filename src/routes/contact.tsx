@@ -6,6 +6,7 @@ import { Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle, Loader2, MessageCi
 import { submitEnquiry } from "@/lib/api/enquiries.functions";
 import { whatsappLink } from "@/lib/whatsapp";
 import { PageHero } from "@/components/PageHero";
+import { MapEmbed } from "@/components/MapEmbed";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -15,6 +16,11 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact — ComPower Africa" },
       { property: "og:description", content: "Get in touch with ComPower Africa." },
     ],
+  }),
+  // Lets other pages (e.g. the generator sizing tool) pre-fill the form
+  validateSearch: (search: Record<string, unknown>): { interest?: string; message?: string } => ({
+    interest: typeof search.interest === "string" ? search.interest.slice(0, 60) : undefined,
+    message: typeof search.message === "string" ? search.message.slice(0, 4000) : undefined,
   }),
   component: ContactPage,
 });
@@ -57,6 +63,7 @@ const interestLabels: Record<string, string> = {
   solar: "Solar Systems",
   rectifiers: "Rectifiers",
   software: "Software (RestWise / MO Billing / BW Dialer)",
+  maintenance: "Maintenance / service contract",
   multiple: "Multiple products",
   other: "Other / Not sure",
 };
@@ -82,7 +89,12 @@ function buildWhatsAppMessage(f: FormState) {
 
 function ContactPage() {
   const submitFn = useServerFn(submitEnquiry);
-  const [form, setForm] = useState<FormState>(emptyForm);
+  const prefill = Route.useSearch();
+  const [form, setForm] = useState<FormState>({
+    ...emptyForm,
+    interest: prefill.interest && prefill.interest in interestLabels ? prefill.interest : "",
+    message: prefill.message ?? "",
+  });
   const [sent, setSent] = useState<FormState | null>(null);
 
   const mutation = useMutation({
@@ -139,7 +151,7 @@ function ContactPage() {
                       href={whatsappLink(buildWhatsAppMessage(sent))}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#1EBE5A]"
+                      className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-navy-950 transition-colors hover:bg-[#1EBE5A]"
                     >
                       <MessageCircle className="h-4 w-4" />
                       Also send on WhatsApp
@@ -290,6 +302,8 @@ function ContactPage() {
                 })}
               </div>
 
+              <MapEmbed />
+
               <div className="rounded-xl bg-navy-900 p-6 text-white">
                 <h3 className="text-lg font-semibold font-display">Need urgent support?</h3>
                 <p className="mt-2 text-sm text-navy-200">
@@ -298,7 +312,7 @@ function ContactPage() {
                 <div className="mt-4 flex flex-wrap gap-3">
                   <a
                     href="tel:+26772732668"
-                    className="inline-flex items-center gap-2 rounded-md bg-teal-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-600"
+                    className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
                   >
                     <Phone className="h-4 w-4" />
                     Call Emergency Line
@@ -307,7 +321,7 @@ function ContactPage() {
                     href={whatsappLink("URGENT: I need emergency support. ")}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1EBE5A]"
+                    className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-4 py-2 text-sm font-semibold text-navy-950 transition-colors hover:bg-[#1EBE5A]"
                   >
                     <MessageCircle className="h-4 w-4" />
                     WhatsApp

@@ -71,7 +71,7 @@ function BWDiallerPage() {
               <a
                 href={APK_URL}
                 download="BWDialer.apk"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-teal-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal-600 shadow-lg shadow-teal-500/20"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-teal-600 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 shadow-lg shadow-teal-500/20"
               >
                 <Download className="h-5 w-5" />
                 Download APK (Android)
@@ -204,7 +204,7 @@ function BWDiallerPage() {
             <a
               href={APK_URL}
               download="BWDialer.apk"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-teal-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal-600"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-teal-600 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
             >
               <Download className="h-5 w-5" />
               Download APK

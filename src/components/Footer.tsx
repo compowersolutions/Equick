@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/compower-logo.jpg";
+import logo from "@/assets/compower-logo.webp";
 
 export function Footer() {
   return (
@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <img src={logo} alt="ComPower logo" className="h-9 w-auto" />
+            <img src={logo} alt="ComPower logo" className="h-9 w-auto" width={311} height={36} />
             <p className="mt-3 text-sm leading-relaxed text-navy-300">
               Simple solutions for complex problems. Your trusted partner for generators, solar, and rectifiers in Botswana.
             </p>
@@ -16,9 +16,9 @@ export function Footer() {
 
 
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">
               Products
-            </h4>
+            </h2>
             <ul className="mt-4 space-y-2">
               <li>
                 <Link to="/products" hash="generators" className="text-sm text-navy-300 hover:text-white transition-colors">
@@ -40,17 +40,27 @@ export function Footer() {
                   Downloads
                 </Link>
               </li>
+              <li>
+                <Link to="/generator-sizing" className="text-sm text-navy-300 hover:text-white transition-colors">
+                  Generator Size Calculator
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">
               Company
-            </h4>
+            </h2>
             <ul className="mt-4 space-y-2">
               <li>
                 <Link to="/about" className="text-sm text-navy-300 hover:text-white transition-colors">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-sm text-navy-300 hover:text-white transition-colors">
+                  Services & Maintenance
                 </Link>
               </li>
               <li>
@@ -67,9 +77,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">
               Contact
-            </h4>
+            </h2>
             <ul className="mt-4 space-y-3">
               <li className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
@@ -88,10 +98,10 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-navy-700 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-navy-400">
+          <p className="text-xs text-navy-300">
             &copy; {new Date().getFullYear()} Highsystem Botswana. All rights reserved.
           </p>
-          <div className="flex gap-4 text-xs text-navy-400">
+          <div className="flex gap-4 text-xs text-navy-300">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
           </div>

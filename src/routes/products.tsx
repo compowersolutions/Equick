@@ -2,11 +2,23 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Zap, Sun, BatteryCharging, Monitor, Phone, CheckCircle, ArrowRight, Download, FileText, Loader2 } from "lucide-react";
-import generatorImg from "@/assets/gen-at-site.jpg";
-import solarImg from "@/assets/solar-rts.jpg";
-import rectifierImg from "@/assets/rectifier-panel.jpg";
-import restassureImg from "@/assets/SW-Rest-01.jpg";
-import moBillingImg from "@/assets/SW-MO-billing.jpg";
+import generatorImg from "@/assets/gen-at-site.webp";
+import solarImg from "@/assets/solar-rts.webp";
+import rectifierImg from "@/assets/rectifier-panel.webp";
+import restassureImg from "@/assets/SW-Rest-01.webp";
+import moBillingImg from "@/assets/SW-MO-billing.webp";
+import generatorSm from "@/assets/gen-at-site-800.webp";
+import solarSm from "@/assets/solar-rts-800.webp";
+import rectifierSm from "@/assets/rectifier-panel-800.webp";
+import restassureSm from "@/assets/SW-Rest-01-800.webp";
+
+// Phone-sized versions of the larger product photos
+const smallImages: Record<string, string> = {
+  [generatorImg]: generatorSm,
+  [solarImg]: solarSm,
+  [rectifierImg]: rectifierSm,
+  [restassureImg]: restassureSm,
+};
 import { listResources, getResourceDownloadUrl } from "@/lib/api/resources.functions";
 import { PageHero } from "@/components/PageHero";
 
@@ -241,7 +253,9 @@ function ProductsPage() {
                 {product.image ? (
                   <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-navy-100">
                     <img
-                      src={product.image}
+                      src={smallImages[product.image] ?? product.image}
+                      srcSet={smallImages[product.image] ? `${smallImages[product.image]} 800w, ${product.image} 1600w` : undefined}
+                      sizes="(min-width: 1024px) 600px, 100vw"
                       alt={product.title}
                       loading="lazy"
                       className="h-full w-full object-cover"
@@ -304,6 +318,14 @@ function ProductsPage() {
                   </div>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
+                  {product.id === "generators" && (
+                    <Link
+                      to="/generator-sizing"
+                      className="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark transition-colors"
+                    >
+                      What size do I need? <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
                   {product.link && (
                     <Link
                       to={product.link}
@@ -317,7 +339,7 @@ function ProductsPage() {
                     <a
                       href={product.apkUrl}
                       download="BWDialer.apk"
-                      className="inline-flex items-center gap-2 rounded-md bg-teal-500 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-600 transition-colors"
+                      className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700 transition-colors"
                     >
                       <Download className="h-4 w-4" />
                       Download APK

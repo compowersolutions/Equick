@@ -41,7 +41,11 @@ function PrivacyPage() {
           (such as IP address and browser type) to deliver the website and protect it from abuse.
         </li>
       </ul>
-      <p>We do not use advertising or tracking cookies.</p>
+      <p>
+        We do not use advertising or tracking cookies. We may count visits with Cloudflare Web Analytics, which does
+        not use cookies or identify individual visitors. The map on our Contact page is provided by Google and only
+        loads if you choose "Show map"; Google's privacy policy then applies.
+      </p>
 
       <h2>How we use it</h2>
       <ul>

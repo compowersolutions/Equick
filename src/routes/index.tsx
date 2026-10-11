@@ -1,9 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Zap, Sun, BatteryCharging, ArrowRight, Phone } from "lucide-react";
-import heroImg from "@/assets/gen-at-site.jpg";
-import solarImg from "@/assets/solar-rts.jpg";
-import rectifierImg from "@/assets/rectifier-panel.jpg";
+import heroImg from "@/assets/gen-at-site.webp";
+import solarSm from "@/assets/solar-rts-800.webp";
+import heroSm from "@/assets/gen-at-site-800.webp";
+import rectifierSm from "@/assets/rectifier-panel-800.webp";
+import heroXs from "@/assets/gen-at-site-480.webp";
+import solarXs from "@/assets/solar-rts-480.webp";
+import rectifierXs from "@/assets/rectifier-panel-480.webp";
 import { ProjectsTeaser, ClientsStrip, Testimonials } from "@/components/HomeSections";
+import { FaqSection } from "@/components/FaqSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,7 +44,7 @@ const C = {
   cream:   "#F8F7F4",
   divider: "#D1D9E0",
   muted:   "#94A3B8",
-  textSm:  "#64748B",
+  textSm:  "#5B6A80",
 } as const;
 
 const PAGE_STYLES = `
@@ -57,7 +62,7 @@ const PAGE_STYLES = `
     width: 28px; height: 2px;
     background: currentColor; flex-shrink: 0;
   }
-  .cp-eyebrow--teal   { color: ${C.teal}; }
+  .cp-eyebrow--teal   { color: #007A69; }
   .cp-eyebrow--center { justify-content: center; }
 
   /* Subtle dot grid in hero */
@@ -148,16 +153,20 @@ function HomePage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: PAGE_STYLES }} />
-      <div style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div style={{ fontFamily: "var(--font-body)" }}>
 
         {/* ── HERO ── */}
-        <section style={{ position: "relative", minHeight: "100vh", background: C.dark, display: "flex", alignItems: "center", overflow: "hidden" }}>
+        <section className="cp-on-dark" style={{ position: "relative", minHeight: "100vh", background: C.dark, display: "flex", alignItems: "center", overflow: "hidden" }}>
 
           {/* Background image */}
           <div style={{ position: "absolute", inset: 0 }}>
             <img
-              src={heroImg}
-              alt="ComPower generator installed at site"
+              src={heroSm}
+              srcSet={`${heroSm} 800w, ${heroImg} 1600w`}
+              sizes="100vw"
+              fetchPriority="high"
+              alt=""
+              aria-hidden="true"
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", opacity: 0.15 }}
               width={1536} height={768}
             />
@@ -193,6 +202,12 @@ function HomePage() {
                 <Phone size={14} /> Get a Quote
               </Link>
             </div>
+            <p style={{ marginTop: "1.25rem", fontSize: "0.875rem", color: C.muted }}>
+              Not sure what size generator you need?{" "}
+              <Link to="/generator-sizing" style={{ color: "#fff", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                Try our free calculator
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -212,9 +227,9 @@ function HomePage() {
 
             {/* Flush card grid */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5px", background: C.divider, border: `1.5px solid ${C.divider}`, borderRadius: "12px", overflow: "hidden" }}>
-              <ServiceCard icon={<Zap size={22} color={C.blue} />}            title="Generators"    description="Reliable diesel and gas generators for uninterrupted power. From emergency backup to prime power for any operational scale."                                                                 imageSrc={heroImg}      anchor="generators" />
-              <ServiceCard icon={<Sun size={22} color={C.blue} />}             title="Solar Systems" description="High-efficiency solar installations and off-grid systems engineered for Botswana's sun — turning abundant daylight into dependable power."                                              imageSrc={solarImg}     anchor="solar" />
-              <ServiceCard icon={<BatteryCharging size={22} color={C.blue} />} title="Rectifiers"   description="Precision rectifiers and power conversion equipment for telecoms, data centers, and industrial applications where clean DC power is non-negotiable." imageSrc={rectifierImg} anchor="rectifiers" />
+              <ServiceCard icon={<Zap size={22} color={C.blue} />}            title="Generators"    description="Reliable diesel and gas generators for uninterrupted power. From emergency backup to prime power for any operational scale."                                                                 imageSrc={heroSm}       imageXs={heroXs}      anchor="generators" />
+              <ServiceCard icon={<Sun size={22} color={C.blue} />}             title="Solar Systems" description="High-efficiency solar installations and off-grid systems engineered for Botswana's sun — turning abundant daylight into dependable power."                                              imageSrc={solarSm}      imageXs={solarXs}     anchor="solar" />
+              <ServiceCard icon={<BatteryCharging size={22} color={C.blue} />} title="Rectifiers"   description="Precision rectifiers and power conversion equipment for telecoms, data centers, and industrial applications where clean DC power is non-negotiable." imageSrc={rectifierSm}  imageXs={rectifierXs} anchor="rectifiers" />
             </div>
           </div>
         </section>
@@ -223,7 +238,7 @@ function HomePage() {
         <ProjectsTeaser />
 
         {/* ── WHY HIGHSYSTEM ── */}
-        <section style={{ background: C.dark2, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)" }}>
+        <section className="cp-on-dark" style={{ background: C.dark2, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)" }}>
           <div className="cp-why-grid" style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
 
             {/* Left */}
@@ -259,7 +274,7 @@ function HomePage() {
                 { number: "24/7",     label: "Support Available"           },
               ].map(({ number, label, unit }: { number: string; label: string; unit?: string }) => (
                 <div key={label} className="cp-stat-box">
-                  <div className="cp-display" style={{ fontWeight: 900, fontSize: "2.09rem", lineHeight: 1, color: C.blue, whiteSpace: "nowrap" }}>
+                  <div className="cp-display" style={{ fontWeight: 900, fontSize: "2.09rem", lineHeight: 1, color: "var(--color-brand-light)", whiteSpace: "nowrap" }}>
                     {number}{unit && <span style={{ fontSize: "1.1rem", fontWeight: 700, marginLeft: "0.3rem" }}>{unit}</span>}
                   </div>
                   <div style={{ marginTop: "0.4rem", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.09em", textTransform: "uppercase", color: C.muted }}>{label}</div>
@@ -270,9 +285,10 @@ function HomePage() {
         </section>
 
         <Testimonials />
+        <FaqSection />
 
         {/* ── CTA ── */}
-        <section style={{ background: C.dark, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)", position: "relative", overflow: "hidden" }}>
+        <section className="cp-on-dark" style={{ background: C.dark, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)", position: "relative", overflow: "hidden" }}>
           {/* Blue radial glow */}
           <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 55% 75% at 50% 50%, rgba(45,99,168,0.1) 0%, transparent 70%)`, pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
@@ -298,13 +314,13 @@ function HomePage() {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function ServiceCard({ icon, title, description, imageSrc, anchor }: {
-  icon: React.ReactNode; title: string; description: string; imageSrc: string; anchor: string;
+function ServiceCard({ icon, title, description, imageSrc, imageXs, anchor }: {
+  icon: React.ReactNode; title: string; description: string; imageSrc: string; imageXs: string; anchor: string;
 }) {
   return (
     <div className="cp-service-card">
       <div style={{ aspectRatio: "16/9", overflow: "hidden", background: "#E2E8F0" }}>
-        <img src={imageSrc} alt={title} loading="lazy" className="cp-card-img"
+        <img src={imageSrc} srcSet={`${imageXs} 480w, ${imageSrc} 800w`} sizes="(min-width: 960px) 400px, 100vw" alt={title} loading="lazy" className="cp-card-img"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           width={512} height={288} />
       </div>
@@ -315,11 +331,11 @@ function ServiceCard({ icon, title, description, imageSrc, anchor }: {
         <h3 className="cp-display" style={{ fontWeight: 800, fontSize: "1.19rem", textTransform: "uppercase", letterSpacing: "0.03em", color: "#0C1018" }}>
           {title}
         </h3>
-        <p style={{ marginTop: "0.4rem", fontSize: "0.875rem", color: "#64748B", lineHeight: 1.75, flex: 1 }}>
+        <p style={{ marginTop: "0.4rem", fontSize: "0.875rem", color: "#5B6A80", lineHeight: 1.75, flex: 1 }}>
           {description}
         </p>
         <Link to="/products" hash={anchor} className="cp-card-link" style={{ marginTop: "1rem" }}>
-          Learn more <ArrowRight size={12} />
+          Learn more<span className="sr-only"> about {title}</span> <ArrowRight size={12} />
         </Link>
       </div>
     </div>

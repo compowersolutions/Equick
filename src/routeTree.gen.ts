@@ -10,11 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RestwiseRouteImport } from './routes/restwise'
 import { Route as RestassureRouteImport } from './routes/restassure'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as GeneratorSizingRouteImport } from './routes/generator-sizing'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -27,6 +29,11 @@ import { Route as ProductsBwdiallerRouteImport } from './routes/Products/bwdiall
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RestwiseRoute = RestwiseRouteImport.update({
@@ -52,6 +59,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GeneratorSizingRoute = GeneratorSizingRouteImport.update({
+  id: '/generator-sizing',
+  path: '/generator-sizing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DownloadsRoute = DownloadsRouteImport.update({
@@ -102,11 +114,13 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/generator-sizing': typeof GeneratorSizingRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/projects': typeof ProjectsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
+  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
@@ -118,11 +132,13 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/generator-sizing': typeof GeneratorSizingRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/projects': typeof ProjectsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
+  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
@@ -135,11 +151,13 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/generator-sizing': typeof GeneratorSizingRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/projects': typeof ProjectsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
+  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
@@ -153,11 +171,13 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/downloads'
+    | '/generator-sizing'
     | '/privacy'
     | '/products'
     | '/projects'
     | '/restassure'
     | '/restwise'
+    | '/services'
     | '/terms'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
@@ -169,11 +189,13 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/downloads'
+    | '/generator-sizing'
     | '/privacy'
     | '/products'
     | '/projects'
     | '/restassure'
     | '/restwise'
+    | '/services'
     | '/terms'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
@@ -185,11 +207,13 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/downloads'
+    | '/generator-sizing'
     | '/privacy'
     | '/products'
     | '/projects'
     | '/restassure'
     | '/restwise'
+    | '/services'
     | '/terms'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
@@ -202,11 +226,13 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   DownloadsRoute: typeof DownloadsRoute
+  GeneratorSizingRoute: typeof GeneratorSizingRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
   ProjectsRoute: typeof ProjectsRoute
   RestassureRoute: typeof RestassureRoute
   RestwiseRoute: typeof RestwiseRoute
+  ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   ProductsBwdiallerRoute: typeof ProductsBwdiallerRoute
   ProductsMoBillingRoute: typeof ProductsMoBillingRoute
@@ -219,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/restwise': {
@@ -254,6 +287,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/generator-sizing': {
+      id: '/generator-sizing'
+      path: '/generator-sizing'
+      fullPath: '/generator-sizing'
+      preLoaderRoute: typeof GeneratorSizingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/downloads': {
@@ -322,11 +362,13 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   DownloadsRoute: DownloadsRoute,
+  GeneratorSizingRoute: GeneratorSizingRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
   ProjectsRoute: ProjectsRoute,
   RestassureRoute: RestassureRoute,
   RestwiseRoute: RestwiseRoute,
+  ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   ProductsBwdiallerRoute: ProductsBwdiallerRoute,
   ProductsMoBillingRoute: ProductsMoBillingRoute,

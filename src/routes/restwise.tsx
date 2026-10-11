@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Monitor, ClipboardList, UtensilsCrossed, Boxes, Users, ArrowRight, CheckCircle, Download, ChevronLeft, ChevronRight } from "lucide-react";
-import dashboardImg from "@/assets/restassure_dashboard.jpg";
-import posImg from "@/assets/restassure_pos.jpg";
-import tablesImg from "@/assets/restassure_tables.jpg";
-import restWiseFlyer from "@/assets/rest-wise-flyer.jpg";
-import posScreen from "@/assets/pos_screen_restwise.jpg";
-import androidScreen from "@/assets/android_screen_restwise.jpg";
-import appleScreen from "@/assets/apple_screen_restwise.jpg";
+import dashboardImg from "@/assets/restassure_dashboard.webp";
+import posImg from "@/assets/restassure_pos.webp";
+import tablesImg from "@/assets/restassure_tables.webp";
+import restWiseFlyer from "@/assets/rest-wise-flyer.webp";
+import posScreen from "@/assets/pos_screen_restwise.webp";
+import androidScreen from "@/assets/android_screen_restwise.webp";
+import appleScreen from "@/assets/apple_screen_restwise.webp";
 import { useState, useEffect, useCallback } from "react";
 
 export const Route = createFileRoute("/restwise")({

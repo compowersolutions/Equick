@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Target, Users, Shield, TrendingUp } from "lucide-react";
-import datacentreImg from "@/assets/datacentre.jpg";
-import boreholeImg from "@/assets/borehole.jpg";
+import datacentreImg from "@/assets/datacentre.webp";
+import boreholeImg from "@/assets/borehole.webp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -26,7 +26,7 @@ const C = {
   cream:  "#F8F7F4",
   divider: "#D1D9E0",
   muted:  "#94A3B8",
-  textSm: "#64748B",
+  textSm: "#5B6A80",
 } as const;
 
 const STYLES = `
@@ -42,7 +42,7 @@ const STYLES = `
     content: ''; display: block; width: 28px; height: 2px;
     background: currentColor; flex-shrink: 0;
   }
-  .cp-eyebrow--teal { color: ${C.teal}; }
+  .cp-eyebrow--teal { color: #007A69; }
 
   /* Value card — blue left-wire on hover */
   .cp-val-card {
@@ -100,10 +100,10 @@ function AboutPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div style={{ fontFamily: "var(--font-body)" }}>
 
         {/* ── HERO ── */}
-        <section style={{ background: C.dark, padding: "clamp(3rem,5vw,4.5rem) clamp(1.5rem,5vw,4rem) clamp(3.5rem,6vw,5rem)", position: "relative", overflow: "hidden" }}>
+        <section className="cp-on-dark" style={{ background: C.dark, padding: "clamp(3rem,5vw,4.5rem) clamp(1.5rem,5vw,4rem) clamp(3.5rem,6vw,5rem)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 70% 80% at 30% 50%, rgba(45,99,168,0.055) 0%, transparent 65%)`, pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto" }}>
             <span className="cp-eyebrow">Who we are</span>
@@ -155,7 +155,7 @@ function AboutPage() {
         </section>
 
         {/* ── VALUES ── */}
-        <section style={{ background: C.dark2, padding: "2.5rem clamp(1.5rem,5vw,4rem)" }}>
+        <section className="cp-on-dark" style={{ background: C.dark2, padding: "2.5rem clamp(1.5rem,5vw,4rem)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "2rem" }}>
               <span className="cp-eyebrow" style={{ justifyContent: "center" }}>What drives us</span>
