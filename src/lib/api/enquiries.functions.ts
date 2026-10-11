@@ -100,38 +100,56 @@ async function sendAutoReply(e: z.output<typeof enquirySchema>) {
   const template = getReplyTemplate(e.interest);
   const attachments: { filename: string; path: string }[] = [];
 
+  // Brochures are a bonus: if looking them up fails, still send the reply.
   if (template.attach.length) {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: files } = await supabaseAdmin
-      .from("resources")
-      .select("category, file_path, file_name, file_size, password_hash, created_at")
-      .in("category", template.attach)
-      .is("password_hash", null)
-      .order("created_at", { ascending: false });
+    try {
+      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+      const { data: files } = await supabaseAdmin
+        .from("resources")
+        .select("category, file_path, file_name, file_size, password_hash, created_at")
+        .in("category", template.attach)
+        .is("password_hash", null)
+        .order("created_at", { ascending: false });
 
-    // Prefer the most specific category first (e.g. "generator" before "catalog")
-    const ordered = (files ?? []).sort(
-      (a, b) => template.attach.indexOf(a.category) - template.attach.indexOf(b.category),
-    );
-    let total = 0;
-    for (const f of ordered) {
-      if (attachments.length >= MAX_ATTACHMENTS || total + f.file_size > MAX_ATTACHMENT_BYTES) continue;
-      const { data: signed } = await supabaseAdmin.storage.from("resources").createSignedUrl(f.file_path, 600);
-      if (!signed) continue;
-      attachments.push({ filename: f.file_name, path: signed.signedUrl });
-      total += f.file_size;
+      // Prefer the most specific category first (e.g. "generator" before "catalog")
+      const ordered = (files ?? []).sort(
+        (a, b) => template.attach.indexOf(a.category) - template.attach.indexOf(b.category),
+      );
+      let total = 0;
+      for (const f of ordered) {
+        if (attachments.length >= MAX_ATTACHMENTS || total + f.file_size > MAX_ATTACHMENT_BYTES) continue;
+        const { data: signed } = await supabaseAdmin.storage.from("resources").createSignedUrl(f.file_path, 600);
+        if (!signed) continue;
+        attachments.push({ filename: f.file_name, path: signed.signedUrl });
+        total += f.file_size;
+      }
+    } catch (err) {
+      console.error("[enquiries] brochure lookup failed, replying without attachments", err);
+      attachments.length = 0;
     }
   }
 
-  const { subject, html } = renderReply(e.name, e.message, template, attachments.map((a) => a.filename));
-  await resendSend(apiKey, {
-    from,
-    to: [e.email],
-    reply_to: replyTo,
-    subject,
-    html,
-    ...(attachments.length ? { attachments } : {}),
-  });
+  const send = (files: typeof attachments) => {
+    const { subject, html } = renderReply(e.name, e.message, template, files.map((a) => a.filename));
+    return resendSend(apiKey, {
+      from,
+      to: [e.email],
+      reply_to: replyTo,
+      subject,
+      html,
+      ...(files.length ? { attachments: files } : {}),
+    });
+  };
+
+  try {
+    await send(attachments);
+  } catch (err) {
+    if (!attachments.length) throw err;
+    // An attachment problem (file too large, unreachable…) must not cost the
+    // customer their reply: resend without brochures; the wording adjusts.
+    console.error("[enquiries] auto-reply with attachments failed, retrying without", err);
+    await send([]);
+  }
 }
 
 async function assertAdmin(userId: string) {
