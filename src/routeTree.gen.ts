@@ -9,15 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as RestwisebkRouteImport } from './routes/restwisebk'
 import { Route as RestwiseRouteImport } from './routes/restwise'
 import { Route as RestassureRouteImport } from './routes/restassure'
 import { Route as ProductsRouteImport } from './routes/products'
-import { Route as IndexbkpRouteImport } from './routes/indexbkp'
-import { Route as DownloadsbkRouteImport } from './routes/downloadsbk'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AuthbkpRouteImport } from './routes/authbkp'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
@@ -25,11 +21,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsMoBillingRouteImport } from './routes/Products/mo-billing'
 import { Route as ProductsBwdiallerRouteImport } from './routes/Products/bwdialler'
 
-const RestwisebkRoute = RestwisebkRouteImport.update({
-  id: '/restwisebk',
-  path: '/restwisebk',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const RestwiseRoute = RestwiseRouteImport.update({
   id: '/restwise',
   path: '/restwise',
@@ -45,16 +36,6 @@ const ProductsRoute = ProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexbkpRoute = IndexbkpRouteImport.update({
-  id: '/indexbkp',
-  path: '/indexbkp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DownloadsbkRoute = DownloadsbkRouteImport.update({
-  id: '/downloadsbk',
-  path: '/downloadsbk',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DownloadsRoute = DownloadsRouteImport.update({
   id: '/downloads',
   path: '/downloads',
@@ -63,11 +44,6 @@ const DownloadsRoute = DownloadsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthbkpRoute = AuthbkpRouteImport.update({
-  id: '/authbkp',
-  path: '/authbkp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -106,15 +82,11 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
-  '/authbkp': typeof AuthbkpRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
-  '/downloadsbk': typeof DownloadsbkRoute
-  '/indexbkp': typeof IndexbkpRoute
   '/products': typeof ProductsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
-  '/restwisebk': typeof RestwisebkRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
@@ -123,15 +95,11 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
-  '/authbkp': typeof AuthbkpRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
-  '/downloadsbk': typeof DownloadsbkRoute
-  '/indexbkp': typeof IndexbkpRoute
   '/products': typeof ProductsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
-  '/restwisebk': typeof RestwisebkRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
@@ -141,15 +109,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
-  '/authbkp': typeof AuthbkpRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
-  '/downloadsbk': typeof DownloadsbkRoute
-  '/indexbkp': typeof IndexbkpRoute
   '/products': typeof ProductsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
-  '/restwisebk': typeof RestwisebkRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
@@ -160,15 +124,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/auth'
-    | '/authbkp'
     | '/contact'
     | '/downloads'
-    | '/downloadsbk'
-    | '/indexbkp'
     | '/products'
     | '/restassure'
     | '/restwise'
-    | '/restwisebk'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
   fileRoutesByTo: FileRoutesByTo
@@ -177,15 +137,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/auth'
-    | '/authbkp'
     | '/contact'
     | '/downloads'
-    | '/downloadsbk'
-    | '/indexbkp'
     | '/products'
     | '/restassure'
     | '/restwise'
-    | '/restwisebk'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
   id:
@@ -194,15 +150,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/auth'
-    | '/authbkp'
     | '/contact'
     | '/downloads'
-    | '/downloadsbk'
-    | '/indexbkp'
     | '/products'
     | '/restassure'
     | '/restwise'
-    | '/restwisebk'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
   fileRoutesById: FileRoutesById
@@ -212,28 +164,17 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
-  AuthbkpRoute: typeof AuthbkpRoute
   ContactRoute: typeof ContactRoute
   DownloadsRoute: typeof DownloadsRoute
-  DownloadsbkRoute: typeof DownloadsbkRoute
-  IndexbkpRoute: typeof IndexbkpRoute
   ProductsRoute: typeof ProductsRoute
   RestassureRoute: typeof RestassureRoute
   RestwiseRoute: typeof RestwiseRoute
-  RestwisebkRoute: typeof RestwisebkRoute
   ProductsBwdiallerRoute: typeof ProductsBwdiallerRoute
   ProductsMoBillingRoute: typeof ProductsMoBillingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/restwisebk': {
-      id: '/restwisebk'
-      path: '/restwisebk'
-      fullPath: '/restwisebk'
-      preLoaderRoute: typeof RestwisebkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/restwise': {
       id: '/restwise'
       path: '/restwise'
@@ -255,20 +196,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/indexbkp': {
-      id: '/indexbkp'
-      path: '/indexbkp'
-      fullPath: '/indexbkp'
-      preLoaderRoute: typeof IndexbkpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/downloadsbk': {
-      id: '/downloadsbk'
-      path: '/downloadsbk'
-      fullPath: '/downloadsbk'
-      preLoaderRoute: typeof DownloadsbkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/downloads': {
       id: '/downloads'
       path: '/downloads'
@@ -281,13 +208,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/authbkp': {
-      id: '/authbkp'
-      path: '/authbkp'
-      fullPath: '/authbkp'
-      preLoaderRoute: typeof AuthbkpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -340,15 +260,11 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
-  AuthbkpRoute: AuthbkpRoute,
   ContactRoute: ContactRoute,
   DownloadsRoute: DownloadsRoute,
-  DownloadsbkRoute: DownloadsbkRoute,
-  IndexbkpRoute: IndexbkpRoute,
   ProductsRoute: ProductsRoute,
   RestassureRoute: RestassureRoute,
   RestwiseRoute: RestwiseRoute,
-  RestwisebkRoute: RestwisebkRoute,
   ProductsBwdiallerRoute: ProductsBwdiallerRoute,
   ProductsMoBillingRoute: ProductsMoBillingRoute,
 }

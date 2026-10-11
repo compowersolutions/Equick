@@ -4,11 +4,6 @@ import heroImg from "@/assets/gen-at-site.jpg";
 import solarImg from "@/assets/solar-rts.jpg";
 import rectifierImg from "@/assets/rectifier-panel.jpg";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// NOTE: Add this line to your root index.html <head> once (no config changes):
-//   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
