@@ -43,7 +43,7 @@ const C = {
 } as const;
 
 const PAGE_STYLES = `
-  .cp-display { font-family: 'Barlow Condensed', sans-serif !important; }
+  .cp-display { font-family: var(--font-display) !important; letter-spacing: -0.02em; }
 
   /* Blue "live-wire" eyebrow — now matches the COM logo colour */
   .cp-eyebrow {
@@ -174,7 +174,7 @@ function HomePage() {
 
             <span className="cp-eyebrow">Botswana's Power Partner</span>
 
-            <h1 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(3.5rem,9vw,7rem)", lineHeight: 0.95, letterSpacing: "-0.01em", textTransform: "uppercase", color: "#fff", maxWidth: "14ch", marginTop: "0.5rem" }}>
+            <h1 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(2.66rem,6.84vw,5.32rem)", lineHeight: 0.95, letterSpacing: "-0.03em", textTransform: "uppercase", color: "#fff", maxWidth: "14ch", marginTop: "0.5rem" }}>
               Simple<br />
               solutions<br />
               for <span style={{ color: C.blue }}>complex</span><br />
@@ -202,7 +202,7 @@ function HomePage() {
 
             <div style={{ marginBottom: "2.5rem" }}>
               <span className="cp-eyebrow cp-eyebrow--teal">What we provide</span>
-              <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2.25rem,5vw,3.5rem)", textTransform: "uppercase", lineHeight: 1, color: C.dark }}>
+              <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.71rem,3.8vw,2.66rem)", textTransform: "uppercase", lineHeight: 1, color: C.dark }}>
                 Power for every scale
               </h2>
               <p style={{ marginTop: "0.75rem", color: C.textSm, maxWidth: "50ch", fontSize: "0.925rem", lineHeight: 1.75 }}>
@@ -229,7 +229,7 @@ function HomePage() {
             {/* Left */}
             <div>
               <span className="cp-eyebrow">Why Highsystem</span>
-              <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2rem,4vw,3rem)", textTransform: "uppercase", lineHeight: 1.05, color: "#fff" }}>
+              <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.52rem,3.04vw,2.28rem)", textTransform: "uppercase", lineHeight: 1.05, color: "#fff" }}>
                 Local expertise.<br />No compromises.
               </h2>
               <p style={{ marginTop: "1rem", color: C.muted, fontSize: "0.9rem", lineHeight: 1.8, maxWidth: "44ch" }}>
@@ -259,7 +259,7 @@ function HomePage() {
                 { number: "24/7",     label: "Support Available"           },
               ].map(({ number, label, unit }: { number: string; label: string; unit?: string }) => (
                 <div key={label} className="cp-stat-box">
-                  <div className="cp-display" style={{ fontWeight: 800, fontSize: "2.75rem", lineHeight: 1, color: C.blue, whiteSpace: "nowrap" }}>
+                  <div className="cp-display" style={{ fontWeight: 900, fontSize: "2.09rem", lineHeight: 1, color: C.blue, whiteSpace: "nowrap" }}>
                     {number}{unit && <span style={{ fontSize: "1.1rem", fontWeight: 700, marginLeft: "0.3rem" }}>{unit}</span>}
                   </div>
                   <div style={{ marginTop: "0.4rem", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.09em", textTransform: "uppercase", color: C.muted }}>{label}</div>
@@ -277,7 +277,7 @@ function HomePage() {
           <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 55% 75% at 50% 50%, rgba(45,99,168,0.1) 0%, transparent 70%)`, pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
             <span className="cp-eyebrow cp-eyebrow--center">Ready to start</span>
-            <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2.25rem,5vw,3.5rem)", textTransform: "uppercase", lineHeight: 1.05, color: "#fff" }}>
+            <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.71rem,3.8vw,2.66rem)", textTransform: "uppercase", lineHeight: 1.05, color: "#fff" }}>
               Power your<br />operation today
             </h2>
             <p style={{ marginTop: "1rem", color: C.muted, fontSize: "0.925rem", maxWidth: "44ch", margin: "1rem auto 0", lineHeight: 1.75 }}>
@@ -312,7 +312,7 @@ function ServiceCard({ icon, title, description, imageSrc, anchor }: {
         <div style={{ width: "42px", height: "42px", background: "rgba(45,99,168,0.08)", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem" }}>
           {icon}
         </div>
-        <h3 className="cp-display" style={{ fontWeight: 700, fontSize: "1.35rem", textTransform: "uppercase", letterSpacing: "0.03em", color: "#0C1018" }}>
+        <h3 className="cp-display" style={{ fontWeight: 800, fontSize: "1.19rem", textTransform: "uppercase", letterSpacing: "0.03em", color: "#0C1018" }}>
           {title}
         </h3>
         <p style={{ marginTop: "0.4rem", fontSize: "0.875rem", color: "#64748B", lineHeight: 1.75, flex: 1 }}>

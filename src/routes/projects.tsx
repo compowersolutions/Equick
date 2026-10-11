@@ -94,7 +94,7 @@ function ProjectsPage() {
                   <span className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-teal-600">
                     {p.category}
                   </span>
-                  <h3 className="font-display mt-1 text-xl text-navy-950">{p.title}</h3>
+                  <h3 className="font-display mt-1 text-lg text-navy-950">{p.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-navy-400">{p.description}</p>
                   {p.location && (
                     <p className="mt-2 flex items-center gap-1 text-xs text-navy-400">
@@ -168,7 +168,7 @@ function ProjectsPage() {
           <figure className="max-h-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <img src={current.image} alt={current.title} className="max-h-[78vh] w-auto rounded-lg object-contain" />
             <figcaption className="mt-3 text-center">
-              <p className="font-display text-xl font-bold uppercase tracking-wide text-white">{current.title}</p>
+              <p className="font-display text-lg font-extrabold uppercase tracking-tight text-white">{current.title}</p>
               <p className="mt-1 text-sm text-navy-300">{current.description}</p>
             </figcaption>
           </figure>

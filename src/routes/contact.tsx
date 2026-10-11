@@ -114,7 +114,7 @@ function ContactPage() {
 
       <section className="py-16 sm:py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2">
+          <div className="grid gap-12 lg:grid-cols-2 [&>*]:min-w-0">
             {/* Form */}
             <div>
               <h2 className="text-2xl font-bold tracking-tight text-foreground font-display">
@@ -264,11 +264,11 @@ function ContactPage() {
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-navy-50">
                         {detail.icon}
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                           {detail.label}
                         </p>
-                        <p className="mt-0.5 text-sm font-medium text-foreground">{detail.value}</p>
+                        <p className="mt-0.5 text-sm font-medium text-foreground [overflow-wrap:anywhere]">{detail.value}</p>
                       </div>
                     </>
                   );

@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -98,29 +98,29 @@
 
 /* ── Brand typography ────────────────────────────────────────────────────────
    Unlayered on purpose so it wins over Tailwind size utilities: every
-   heading tagged font-display gets the home page's bold condensed caps. */
+   heading tagged font-display gets the home page's heavy Inter Black caps. */
 h1.font-display,
 h2.font-display {
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   line-height: 1;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.025em;
 }
 h1.font-display {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 0.95;
+  font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+  line-height: 0.98;
 }
 h2.font-display {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.35rem, 3vw, 2.3rem);
 }
 h3.font-display {
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.005em;
 }
 
 /* ── Shared brand components (same look as home / about pages) ─────────────── */
-.cp-display { font-family: var(--font-display) !important; }
+.cp-display { font-family: var(--font-display) !important; letter-spacing: -0.02em; }
 
 .cp-eyebrow {
   display: inline-flex; align-items: center; gap: 10px;

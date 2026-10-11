@@ -37,7 +37,7 @@ const C = {
 } as const;
 
 const STYLES = `
-  .cp-display { font-family: 'Barlow Condensed', sans-serif !important; }
+  .cp-display { font-family: var(--font-display) !important; letter-spacing: -0.02em; }
 
   .cp-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
@@ -204,7 +204,7 @@ function PasswordModal({ resourceId, resourceTitle, onClose, onSuccess }: {
             <Lock size={18} color="#2D63A8" />
           </div>
           <div>
-            <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1.1rem", textTransform: "uppercase", color: "#fff" }}>Password Required</h3>
+            <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "0.97rem", textTransform: "uppercase", color: "#fff" }}>Password Required</h3>
             <p style={{ fontSize: "0.75rem", color: "#94A3B8", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: "220px" }}>{resourceTitle}</p>
           </div>
         </div>
@@ -301,7 +301,7 @@ function DownloadsPage() {
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 70% at 30% 50%, rgba(0,180,160,0.05) 0%, transparent 65%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto" }}>
             <span className="cp-eyebrow" style={{ color: C.teal }}>Resource library</span>
-            <h1 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2.25rem,5vw,3.75rem)", lineHeight: 0.95, textTransform: "uppercase", color: "#fff", marginTop: "0.5rem" }}>
+            <h1 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.71rem,3.8vw,2.85rem)", lineHeight: 0.95, textTransform: "uppercase", color: "#fff", marginTop: "0.5rem" }}>
               Downloads
             </h1>
             <p style={{ marginTop: "1.25rem", color: C.muted, fontSize: "clamp(0.95rem,1.4vw,1.05rem)", maxWidth: "52ch", lineHeight: 1.8 }}>
@@ -318,7 +318,7 @@ function DownloadsPage() {
               {/* Sign-in banner */}
               <div style={{ background: "rgba(0,180,160,0.08)", border: `1px solid rgba(0,180,160,0.25)`, borderRadius: "12px", padding: "1.5rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1.5rem", flexWrap: "wrap", marginBottom: "1.75rem" }}>
                 <div>
-                  <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1.3rem", textTransform: "uppercase", color: "#fff" }}>Free access to all downloads</p>
+                  <p style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1.14rem", textTransform: "uppercase", color: "#fff" }}>Free access to all downloads</p>
                   <p style={{ marginTop: "0.35rem", fontSize: "0.875rem", color: C.muted }}>Create a free account or sign in to access our full library of technical documents.</p>
                 </div>
                 <Link to="/auth" className="cp-btn-primary-sm">
@@ -326,7 +326,7 @@ function DownloadsPage() {
                 </Link>
               </div>
 
-              <h2 className="cp-display" style={{ fontWeight: 700, fontSize: "1.5rem", textTransform: "uppercase", color: "#fff", marginBottom: "1.5rem" }}>Available Categories</h2>
+              <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "1.32rem", textTransform: "uppercase", color: "#fff", marginBottom: "1.5rem" }}>Available Categories</h2>
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "1rem" }}>
                 {CATEGORIES.map((cat) => (
@@ -334,7 +334,7 @@ function DownloadsPage() {
                     <div style={{ width: "60px", height: "60px", background: "rgba(45,99,168,0.1)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {cat.icon}
                     </div>
-                    <h3 className="cp-display" style={{ fontWeight: 700, fontSize: "1.1rem", textTransform: "uppercase", color: "#fff", marginTop: "1rem" }}>{cat.label}</h3>
+                    <h3 className="cp-display" style={{ fontWeight: 800, fontSize: "0.97rem", textTransform: "uppercase", color: "#fff", marginTop: "1rem" }}>{cat.label}</h3>
                     <p style={{ marginTop: "0.4rem", fontSize: "0.825rem", color: C.muted, lineHeight: 1.65 }}>{cat.description}</p>
                     <Link to="/auth" className="cp-cat-link">
                       <LogIn size={12} /> Sign in to access
@@ -397,7 +397,7 @@ function DownloadsPage() {
                           )}
                         </div>
 
-                        <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1.1rem", textTransform: "uppercase", color: "#fff" }}>
+                        <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "0.97rem", textTransform: "uppercase", color: "#fff" }}>
                           {r.title}
                         </h3>
                         {r.description && (

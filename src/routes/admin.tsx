@@ -33,7 +33,7 @@ const C = {
 } as const;
 
 const STYLES = `
-  .cp-display { font-family: 'Barlow Condensed', sans-serif !important; }
+  .cp-display { font-family: var(--font-display) !important; letter-spacing: -0.02em; }
 
   .cp-admin-input {
     display: block; width: 100%;
@@ -168,7 +168,7 @@ function AdminPage() {
         <div style={{ minHeight: "calc(100vh - 4rem)", display: "flex", alignItems: "center", justifyContent: "center", background: C.dark, padding: "2rem 1rem" }}>
           <div style={{ maxWidth: "420px", width: "100%", background: C.dark2, border: `1px solid ${C.border}`, borderRadius: "14px", padding: "2.25rem", textAlign: "center" }}>
             <ShieldAlert size={36} color="#F87171" style={{ margin: "0 auto" }} />
-            <h1 className="cp-display" style={{ marginTop: "1rem", fontSize: "1.75rem", fontWeight: 800, textTransform: "uppercase", color: "#fff" }}>
+            <h1 className="cp-display" style={{ marginTop: "1rem", fontSize: "1.54rem", fontWeight: 900, textTransform: "uppercase", color: "#fff" }}>
               Not authorized
             </h1>
             <p style={{ marginTop: "0.75rem", fontSize: "0.875rem", color: C.muted, lineHeight: 1.7 }}>
@@ -251,7 +251,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
       <div style={{ background: C.dark2, borderBottom: `1px solid ${C.border}`, padding: "1rem clamp(1.5rem,5vw,4rem)" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
           <div>
-            <h1 className="cp-display" style={{ fontWeight: 800, fontSize: "2rem", textTransform: "uppercase", color: "#fff", lineHeight: 1 }}>Admin Dashboard</h1>
+            <h1 className="cp-display" style={{ fontWeight: 900, fontSize: "1.52rem", textTransform: "uppercase", color: "#fff", lineHeight: 1 }}>Admin Dashboard</h1>
             <p style={{ marginTop: "0.3rem", fontSize: "0.8rem", color: C.muted }}>Manage downloadable resources</p>
           </div>
           <button onClick={onSignOut} className="cp-btn-outline-sm">
@@ -264,7 +264,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
 
         {/* ── Upload form ── */}
         <div className="cp-admin-card">
-          <h2 className="cp-display" style={{ fontWeight: 700, fontSize: "1.3rem", textTransform: "uppercase", color: "#fff", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "1.14rem", textTransform: "uppercase", color: "#fff", display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <Upload size={16} color={C.blue} /> Upload resource
           </h2>
 
@@ -325,7 +325,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
 
         {/* ── Resources list ── */}
         <div className="cp-admin-card">
-          <h2 className="cp-display" style={{ fontWeight: 700, fontSize: "1.3rem", textTransform: "uppercase", color: "#fff" }}>
+          <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "1.14rem", textTransform: "uppercase", color: "#fff" }}>
             Resources <span style={{ color: C.muted, fontWeight: 600 }}>({resources?.length ?? 0})</span>
           </h2>
 
@@ -410,7 +410,7 @@ function EnquiriesPanel() {
 
   return (
     <div className="cp-admin-card">
-      <h2 className="cp-display" style={{ fontWeight: 700, fontSize: "1.3rem", textTransform: "uppercase", color: "#fff", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+      <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "1.14rem", textTransform: "uppercase", color: "#fff", display: "flex", alignItems: "center", gap: "0.5rem" }}>
         <Inbox size={16} color={C.blue} /> Website enquiries
         <span style={{ color: C.muted, fontWeight: 600 }}>({enquiries?.length ?? 0})</span>
         {newCount > 0 && <span className="cp-protected-badge" style={{ background: "rgba(0,180,160,0.15)", color: C.teal }}>{newCount} new</span>}

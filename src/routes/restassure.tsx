@@ -32,7 +32,7 @@ const C = {
 } as const;
 
 const STYLES = `
-  .cp-display { font-family: 'Barlow Condensed', sans-serif !important; }
+  .cp-display { font-family: var(--font-display) !important; letter-spacing: -0.02em; }
 
   .cp-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
@@ -137,7 +137,7 @@ function RestAssurePage() {
                 <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: C.teal }}>Restaurant Software</span>
               </div>
 
-              <h1 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2.5rem,6vw,4.5rem)", lineHeight: 0.95, textTransform: "uppercase", color: "#fff" }}>
+              <h1 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.9rem,4.56vw,3.42rem)", lineHeight: 0.95, textTransform: "uppercase", color: "#fff" }}>
                 Rest<span style={{ color: C.teal }}>Assure</span>
               </h1>
               <p style={{ marginTop: "1rem", fontSize: "clamp(1rem,2vw,1.3rem)", fontWeight: 600, color: C.teal, letterSpacing: "0.02em" }}>
@@ -169,7 +169,7 @@ function RestAssurePage() {
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
               <span className="cp-eyebrow cp-eyebrow--center">Everything in one system</span>
-              <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2rem,4vw,3rem)", textTransform: "uppercase", color: "#fff", lineHeight: 1, marginTop: "0.6rem" }}>
+              <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.52rem,3.04vw,2.28rem)", textTransform: "uppercase", color: "#fff", lineHeight: 1, marginTop: "0.6rem" }}>
                 What's included
               </h2>
               <p style={{ marginTop: "1rem", color: C.muted, maxWidth: "44ch", margin: "1rem auto 0", fontSize: "0.9rem", lineHeight: 1.75 }}>
@@ -183,7 +183,7 @@ function RestAssurePage() {
                   <div style={{ width: "44px", height: "44px", background: C.teal10, borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem" }}>
                     {mod.icon}
                   </div>
-                  <h3 className="cp-display" style={{ fontWeight: 700, fontSize: "1.3rem", textTransform: "uppercase", color: "#fff" }}>{mod.title}</h3>
+                  <h3 className="cp-display" style={{ fontWeight: 800, fontSize: "1.14rem", textTransform: "uppercase", color: "#fff" }}>{mod.title}</h3>
                   <p style={{ marginTop: "0.6rem", fontSize: "0.875rem", color: C.muted, lineHeight: 1.75 }}>{mod.description}</p>
                 </div>
               ))}
@@ -196,7 +196,7 @@ function RestAssurePage() {
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
               <span className="cp-eyebrow cp-eyebrow--center">See it in action</span>
-              <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2rem,4vw,3rem)", textTransform: "uppercase", color: C.dark, lineHeight: 1, marginTop: "0.6rem" }}>
+              <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.52rem,3.04vw,2.28rem)", textTransform: "uppercase", color: C.dark, lineHeight: 1, marginTop: "0.6rem" }}>
                 Built for busy kitchens
               </h2>
             </div>
@@ -216,7 +216,7 @@ function RestAssurePage() {
           <div style={{ maxWidth: "720px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
               <span className="cp-eyebrow cp-eyebrow--blue cp-eyebrow--center">Key features</span>
-              <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2.5rem,5vw,3.5rem)", textTransform: "uppercase", color: "#fff", lineHeight: 1, marginTop: "0.6rem" }}>
+              <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.9rem,3.8vw,2.66rem)", textTransform: "uppercase", color: "#fff", lineHeight: 1, marginTop: "0.6rem" }}>
                 Everything you need
               </h2>
             </div>
@@ -236,7 +236,7 @@ function RestAssurePage() {
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(0,180,160,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
             <span className="cp-eyebrow cp-eyebrow--center">Ready to streamline?</span>
-            <h2 className="cp-display" style={{ fontWeight: 800, fontSize: "clamp(2rem,4vw,3rem)", textTransform: "uppercase", color: "#fff", lineHeight: 1.05, marginTop: "0.6rem" }}>
+            <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.52rem,3.04vw,2.28rem)", textTransform: "uppercase", color: "#fff", lineHeight: 1.05, marginTop: "0.6rem" }}>
               Let's set up<br />your restaurant
             </h2>
             <p style={{ marginTop: "1.25rem", color: C.muted, fontSize: "0.95rem", maxWidth: "44ch", margin: "1.25rem auto 0", lineHeight: 1.75 }}>

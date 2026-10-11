@@ -25,7 +25,7 @@ const C = {
 } as const;
 
 const STYLES = `
-  .cp-display { font-family: 'Barlow Condensed', sans-serif !important; }
+  .cp-display { font-family: var(--font-display) !important; letter-spacing: -0.02em; }
 
   .cp-auth-input {
     display: block; width: 100%;
@@ -174,7 +174,7 @@ function AuthPage() {
           {/* Card */}
           <div style={{ background: C.dark2, border: `1px solid ${C.border}`, borderRadius: "14px", padding: "1.75rem" }}>
 
-            <h1 className="cp-display" style={{ fontWeight: 800, fontSize: "2rem", textTransform: "uppercase", color: "#fff", lineHeight: 1 }}>
+            <h1 className="cp-display" style={{ fontWeight: 900, fontSize: "1.52rem", textTransform: "uppercase", color: "#fff", lineHeight: 1 }}>
               {{ signin: "Sign in", signup: "Create account", forgot: "Reset password", reset: "New password" }[mode]}
             </h1>
             <p style={{ marginTop: "0.6rem", fontSize: "0.875rem", color: C.muted, lineHeight: 1.6 }}>

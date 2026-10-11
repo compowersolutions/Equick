@@ -34,7 +34,7 @@ export function ProjectsTeaser() {
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/10 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4">
                 <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-teal-400">{p.category}</p>
-                <p className="font-display mt-0.5 text-lg font-bold uppercase leading-tight text-white">{p.title}</p>
+                <p className="font-display mt-0.5 text-sm font-extrabold uppercase leading-tight tracking-tight text-white [overflow-wrap:anywhere] sm:text-base">{p.title}</p>
               </div>
             </Link>
           ))}
@@ -56,7 +56,7 @@ export function ClientsStrip() {
             c.logo ? (
               <img key={c.name} src={c.logo} alt={c.name} className="h-10 w-auto object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0" />
             ) : (
-              <span key={c.name} className="font-display text-xl font-bold uppercase tracking-wide text-navy-400">
+              <span key={c.name} className="font-display text-lg font-extrabold uppercase tracking-tight text-navy-400">
                 {c.name}
               </span>
             ),
