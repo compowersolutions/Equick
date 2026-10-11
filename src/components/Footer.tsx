@@ -21,17 +21,17 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-2">
               <li>
-                <Link to="/products" className="text-sm text-navy-300 hover:text-white transition-colors">
+                <Link to="/products" hash="generators" className="text-sm text-navy-300 hover:text-white transition-colors">
                   Generators
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-sm text-navy-300 hover:text-white transition-colors">
+                <Link to="/products" hash="solar" className="text-sm text-navy-300 hover:text-white transition-colors">
                   Solar Systems
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-sm text-navy-300 hover:text-white transition-colors">
+                <Link to="/products" hash="rectifiers" className="text-sm text-navy-300 hover:text-white transition-colors">
                   Rectifiers
                 </Link>
               </li>
@@ -51,6 +51,11 @@ export function Footer() {
               <li>
                 <Link to="/about" className="text-sm text-navy-300 hover:text-white transition-colors">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/projects" className="text-sm text-navy-300 hover:text-white transition-colors">
+                  Our Work
                 </Link>
               </li>
               <li>
@@ -87,8 +92,8 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Highsystem Botswana. All rights reserved.
           </p>
           <div className="flex gap-4 text-xs text-navy-400">
-            <span className="hover:text-navy-300 transition-colors cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-navy-300 transition-colors cursor-pointer">Terms of Service</span>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
           </div>
         </div>
       </div>

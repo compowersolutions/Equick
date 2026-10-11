@@ -57,6 +57,7 @@ export type Database = {
           file_size: number
           file_type: string
           id: string
+          password_hash: string | null
           title: string
           updated_at: string
         }
@@ -69,6 +70,7 @@ export type Database = {
           file_size: number
           file_type: string
           id?: string
+          password_hash?: string | null
           title: string
           updated_at?: string
         }
@@ -81,6 +83,7 @@ export type Database = {
           file_size?: number
           file_type?: string
           id?: string
+          password_hash?: string | null
           title?: string
           updated_at?: string
         }

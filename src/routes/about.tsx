@@ -24,6 +24,7 @@ const C = {
   blueD:  "#1E4F8C",
   teal:   "#00B4A0",
   cream:  "#F8F7F4",
+  divider: "#D1D9E0",
   muted:  "#94A3B8",
   textSm: "#64748B",
 } as const;

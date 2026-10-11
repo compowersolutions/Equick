@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -35,44 +35,49 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
 
-  --color-navy-50: oklch(0.96 0.01 255);
-  --color-navy-100: oklch(0.92 0.015 255);
-  --color-navy-200: oklch(0.85 0.02 255);
-  --color-navy-300: oklch(0.72 0.03 255);
-  --color-navy-400: oklch(0.58 0.045 255);
-  --color-navy-500: oklch(0.45 0.06 255);
-  --color-navy-600: oklch(0.35 0.065 255);
-  --color-navy-700: oklch(0.28 0.06 255);
-  --color-navy-800: oklch(0.2 0.055 255);
-  --color-navy-900: oklch(0.14 0.05 255);
-  --color-navy-950: oklch(0.08 0.04 255);
+  /* Brand palette — taken from the ComPower logo and the home page */
+  --color-navy-50: #F1F4F8;
+  --color-navy-100: #E2E8F0;
+  --color-navy-200: #CBD5E0;
+  --color-navy-300: #94A3B8;
+  --color-navy-400: #64748B;
+  --color-navy-500: #475569;
+  --color-navy-600: #2D3A52;
+  --color-navy-700: #232F45;
+  --color-navy-800: #1A2235;
+  --color-navy-900: #111827;
+  --color-navy-950: #0C1018;
 
-  --color-teal-400: oklch(0.65 0.1 195);
-  --color-teal-500: oklch(0.55 0.09 215);
-  --color-teal-600: oklch(0.45 0.08 210);
+  --color-brand: #2D63A8;
+  --color-brand-dark: #1E4F8C;
+  --color-cream: #F8F7F4;
+
+  --color-teal-400: #2CC8B5;
+  --color-teal-500: #00B4A0;
+  --color-teal-600: #00967F;
 }
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.98 0.005 255);
-  --foreground: oklch(0.14 0.05 255);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.14 0.05 255);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.14 0.05 255);
-  --primary: oklch(0.33 0.065 255);
-  --primary-foreground: oklch(0.97 0.005 255);
-  --secondary: oklch(0.95 0.01 255);
-  --secondary-foreground: oklch(0.33 0.065 255);
-  --muted: oklch(0.95 0.01 255);
-  --muted-foreground: oklch(0.5 0.04 255);
-  --accent: oklch(0.95 0.01 255);
-  --accent-foreground: oklch(0.33 0.065 255);
-  --destructive: oklch(0.58 0.2 25);
-  --destructive-foreground: oklch(0.97 0.005 255);
-  --border: oklch(0.9 0.015 255);
-  --input: oklch(0.9 0.015 255);
-  --ring: oklch(0.55 0.09 215);
+  --background: #FFFFFF;
+  --foreground: #0C1018;
+  --card: #FFFFFF;
+  --card-foreground: #0C1018;
+  --popover: #FFFFFF;
+  --popover-foreground: #0C1018;
+  --primary: #2D63A8;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F4F8;
+  --secondary-foreground: #0C1018;
+  --muted: #F1F4F8;
+  --muted-foreground: #64748B;
+  --accent: #F1F4F8;
+  --accent-foreground: #0C1018;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --input: #D1D9E0;
+  --ring: #2D63A8;
 }
 
 @layer base {
@@ -89,4 +94,63 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+}
+
+/* ── Brand typography ────────────────────────────────────────────────────────
+   Unlayered on purpose so it wins over Tailwind size utilities: every
+   heading tagged font-display gets the home page's bold condensed caps. */
+h1.font-display,
+h2.font-display {
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.005em;
+}
+h1.font-display {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 0.95;
+}
+h2.font-display {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+h3.font-display {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ── Shared brand components (same look as home / about pages) ─────────────── */
+.cp-display { font-family: var(--font-display) !important; }
+
+.cp-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--color-brand); margin-bottom: 0.75rem;
+}
+.cp-eyebrow::before {
+  content: ""; display: block; width: 28px; height: 2px;
+  background: currentColor; flex-shrink: 0;
+}
+.cp-eyebrow--teal { color: var(--color-teal-500); }
+.cp-eyebrow--center { justify-content: center; }
+
+/* Dark page header with the home hero's grid + blue glow */
+.cp-hero {
+  position: relative; overflow: hidden; isolation: isolate;
+  background: var(--color-navy-950);
+}
+.cp-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+.cp-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 65% 70% at 70% 40%, rgba(45,99,168,0.14) 0%, transparent 60%);
 }

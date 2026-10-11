@@ -9,9 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as RestwiseRouteImport } from './routes/restwise'
 import { Route as RestassureRouteImport } from './routes/restassure'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -21,6 +24,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsMoBillingRouteImport } from './routes/Products/mo-billing'
 import { Route as ProductsBwdiallerRouteImport } from './routes/Products/bwdialler'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RestwiseRoute = RestwiseRouteImport.update({
   id: '/restwise',
   path: '/restwise',
@@ -31,9 +39,19 @@ const RestassureRoute = RestassureRouteImport.update({
   path: '/restassure',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DownloadsRoute = DownloadsRouteImport.update({
@@ -84,9 +102,12 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
+  '/terms': typeof TermsRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
@@ -97,9 +118,12 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
+  '/terms': typeof TermsRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
@@ -111,9 +135,12 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
   '/restassure': typeof RestassureRoute
   '/restwise': typeof RestwiseRoute
+  '/terms': typeof TermsRoute
   '/Products/bwdialler': typeof ProductsBwdiallerRoute
   '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
@@ -126,9 +153,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/downloads'
+    | '/privacy'
     | '/products'
+    | '/projects'
     | '/restassure'
     | '/restwise'
+    | '/terms'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
   fileRoutesByTo: FileRoutesByTo
@@ -139,9 +169,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/downloads'
+    | '/privacy'
     | '/products'
+    | '/projects'
     | '/restassure'
     | '/restwise'
+    | '/terms'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
   id:
@@ -152,9 +185,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/downloads'
+    | '/privacy'
     | '/products'
+    | '/projects'
     | '/restassure'
     | '/restwise'
+    | '/terms'
     | '/Products/bwdialler'
     | '/Products/mo-billing'
   fileRoutesById: FileRoutesById
@@ -166,15 +202,25 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   DownloadsRoute: typeof DownloadsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
+  ProjectsRoute: typeof ProjectsRoute
   RestassureRoute: typeof RestassureRoute
   RestwiseRoute: typeof RestwiseRoute
+  TermsRoute: typeof TermsRoute
   ProductsBwdiallerRoute: typeof ProductsBwdiallerRoute
   ProductsMoBillingRoute: typeof ProductsMoBillingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/restwise': {
       id: '/restwise'
       path: '/restwise'
@@ -189,11 +235,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RestassureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/downloads': {
@@ -262,9 +322,12 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   DownloadsRoute: DownloadsRoute,
+  PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
+  ProjectsRoute: ProjectsRoute,
   RestassureRoute: RestassureRoute,
   RestwiseRoute: RestwiseRoute,
+  TermsRoute: TermsRoute,
   ProductsBwdiallerRoute: ProductsBwdiallerRoute,
   ProductsMoBillingRoute: ProductsMoBillingRoute,
 }

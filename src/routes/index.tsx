@@ -3,6 +3,7 @@ import { Zap, Sun, BatteryCharging, ArrowRight, Phone } from "lucide-react";
 import heroImg from "@/assets/gen-at-site.jpg";
 import solarImg from "@/assets/solar-rts.jpg";
 import rectifierImg from "@/assets/rectifier-panel.jpg";
+import { ProjectsTeaser, ClientsStrip, Testimonials } from "@/components/HomeSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -211,12 +212,15 @@ function HomePage() {
 
             {/* Flush card grid */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5px", background: C.divider, border: `1.5px solid ${C.divider}`, borderRadius: "12px", overflow: "hidden" }}>
-              <ServiceCard icon={<Zap size={22} color={C.blue} />}            title="Generators"    description="Reliable diesel and gas generators for uninterrupted power. From emergency backup to prime power for any operational scale."                                                                 imageSrc={heroImg}      />
-              <ServiceCard icon={<Sun size={22} color={C.blue} />}             title="Solar Systems" description="High-efficiency solar installations and off-grid systems engineered for Botswana's sun — turning abundant daylight into dependable power."                                              imageSrc={solarImg}     />
-              <ServiceCard icon={<BatteryCharging size={22} color={C.blue} />} title="Rectifiers"   description="Precision rectifiers and power conversion equipment for telecoms, data centers, and industrial applications where clean DC power is non-negotiable." imageSrc={rectifierImg} />
+              <ServiceCard icon={<Zap size={22} color={C.blue} />}            title="Generators"    description="Reliable diesel and gas generators for uninterrupted power. From emergency backup to prime power for any operational scale."                                                                 imageSrc={heroImg}      anchor="generators" />
+              <ServiceCard icon={<Sun size={22} color={C.blue} />}             title="Solar Systems" description="High-efficiency solar installations and off-grid systems engineered for Botswana's sun — turning abundant daylight into dependable power."                                              imageSrc={solarImg}     anchor="solar" />
+              <ServiceCard icon={<BatteryCharging size={22} color={C.blue} />} title="Rectifiers"   description="Precision rectifiers and power conversion equipment for telecoms, data centers, and industrial applications where clean DC power is non-negotiable." imageSrc={rectifierImg} anchor="rectifiers" />
             </div>
           </div>
         </section>
+
+        <ClientsStrip />
+        <ProjectsTeaser />
 
         {/* ── WHY HIGHSYSTEM ── */}
         <section style={{ background: C.dark2, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)" }}>
@@ -263,6 +267,8 @@ function HomePage() {
           </div>
         </section>
 
+        <Testimonials />
+
         {/* ── CTA ── */}
         <section style={{ background: C.dark, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)", position: "relative", overflow: "hidden" }}>
           {/* Blue radial glow */}
@@ -290,8 +296,8 @@ function HomePage() {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function ServiceCard({ icon, title, description, imageSrc }: {
-  icon: React.ReactNode; title: string; description: string; imageSrc: string;
+function ServiceCard({ icon, title, description, imageSrc, anchor }: {
+  icon: React.ReactNode; title: string; description: string; imageSrc: string; anchor: string;
 }) {
   return (
     <div className="cp-service-card">
@@ -310,7 +316,7 @@ function ServiceCard({ icon, title, description, imageSrc }: {
         <p style={{ marginTop: "0.4rem", fontSize: "0.875rem", color: "#64748B", lineHeight: 1.75, flex: 1 }}>
           {description}
         </p>
-        <Link to="/products" className="cp-card-link" style={{ marginTop: "1rem" }}>
+        <Link to="/products" hash={anchor} className="cp-card-link" style={{ marginTop: "1rem" }}>
           Learn more <ArrowRight size={12} />
         </Link>
       </div>

@@ -263,7 +263,7 @@ function RestWisePage() {
   return (
     <div>
       {/* ── Hero ── */}
-      <section className="bg-navy-900 pb-0 pt-16 sm:pt-20 overflow-hidden">
+      <section className="cp-hero pb-0 pt-16 sm:pt-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Title block — centered */}

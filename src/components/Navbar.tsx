@@ -7,6 +7,7 @@ import logo from "@/assets/compower-logo.jpg";
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/products", label: "Products" },
+  { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
@@ -38,11 +39,10 @@ export function Navbar() {
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link, i) => {
             const isActive = currentPath === link.to;
-            // Insert the Resources dropdown right after "Products" (2nd item),
-            // matching where "Downloads" used to sit in the original order.
+            // Insert the Resources dropdown right after "Projects".
             return (
               <Fragment key={link.to}>
-                {i === 2 && (
+                {i === 3 && (
                   <div
                     key="resources"
                     className="relative"
@@ -132,7 +132,7 @@ export function Navbar() {
               const isActive = currentPath === link.to;
               return (
                 <Fragment key={link.to}>
-                  {i === 2 && (
+                  {i === 3 && (
                     <div key="resources-mobile">
                       <button
                         onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}

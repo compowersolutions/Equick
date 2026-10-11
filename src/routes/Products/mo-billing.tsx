@@ -81,7 +81,7 @@ function MOBillingPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-navy-900 py-16 sm:py-20">
+      <section className="cp-hero py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-navy-800">
             <Receipt className="h-7 w-7 text-teal-500" />

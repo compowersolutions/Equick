@@ -8,6 +8,7 @@ import rectifierImg from "@/assets/rectifier-panel.jpg";
 import restassureImg from "@/assets/SW-Rest-01.jpg";
 import moBillingImg from "@/assets/SW-MO-billing.jpg";
 import { listResources, getResourceDownloadUrl } from "@/lib/api/resources.functions";
+import { PageHero } from "@/components/PageHero";
 
 
 export const Route = createFileRoute("/products")({
@@ -103,7 +104,7 @@ const products = [
       "Real-time order tracking across all stations",
     ],
     applications: ["Restaurants & cafes", "Takeaway outlets", "Multi-branch food chains", "Hotel F&B operations"],
-    link: "/products/restwise" as string | null,
+    link: "/restwise" as string | null,
     apkUrl: null as string | null,
   },
   {
@@ -123,7 +124,7 @@ const products = [
       "Works offline — no internet required",
     ],
     applications: ["Small businesses", "Freelancers", "Retail shops", "Service providers"],
-    link: "/products/mo-billing" as string | null,
+    link: "/Products/mo-billing" as string | null,
     apkUrl: null as string | null,
   },
   {
@@ -143,7 +144,7 @@ const products = [
       "Free to download and use",
     ],
     applications: ["Everyday callers", "Business users", "Entrepreneurs", "Anyone on a Botswana network"],
-    link: "/products/bwdialler" as string | null,
+    link: "/Products/bwdialler" as string | null,
     apkUrl: APK_URL,
   },
 ];
@@ -208,25 +209,33 @@ function ProductDownloads({ category }: { category: "generator" | "solar" | "rec
 function ProductsPage() {
   return (
     <div>
-      {/* Header */}
-      <section className="bg-navy-900 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl font-display">
-            Our Products
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-navy-200">
-            Power and software solutions engineered for reliability, efficiency, and performance in Botswana's demanding environment.
-          </p>
+      <PageHero eyebrow="What we provide" title="Power & software" highlight="built for Botswana">
+        Power and software solutions engineered for reliability, efficiency, and performance in Botswana's demanding environment.
+      </PageHero>
+
+      {/* Jump links */}
+      <nav aria-label="Products" className="sticky top-16 z-30 border-b border-border bg-white/95 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 py-2 sm:px-6 lg:px-8">
+          {products.map((p) => (
+            <a
+              key={p.id}
+              href={`#${p.id}`}
+              className="shrink-0 rounded-md px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {p.title}
+            </a>
+          ))}
         </div>
-      </section>
+      </nav>
 
       {/* Product Sections */}
-      <section className="py-16 sm:py-20 bg-background">
+      <section className="py-16 sm:py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-24">
           {products.map((product, index) => (
             <div
               key={product.id}
-              className={`grid gap-10 lg:grid-cols-2 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
+              id={product.id}
+              className={`scroll-mt-32 grid gap-10 lg:grid-cols-2 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
             >
               <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                 {product.image ? (
@@ -250,7 +259,7 @@ function ProductsPage() {
                       <div className="mx-auto h-20 w-20 rounded-full bg-teal-500/10 border border-teal-500/20 flex items-center justify-center mb-4">
                         <Phone className="h-10 w-10 text-teal-400" />
                       </div>
-                      <p className="text-2xl font-bold text-white font-display">BWDialller</p>
+                      <p className="text-2xl font-bold uppercase text-white font-display">BWDialller</p>
                       <p className="text-teal-400 text-sm mt-1">Save Airtime</p>
                     </div>
                   </div>
@@ -335,12 +344,13 @@ function ProductsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-20 bg-navy-50">
+      <section className="cp-hero py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground font-display">
+          <span className="cp-eyebrow cp-eyebrow--center">Free consultation</span>
+          <h2 className="text-white font-display">
             Not sure what you need?
           </h2>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-4 text-navy-300">
             Our engineers can assess your power requirements and recommend the right combination of products for your specific application.
           </p>
           <div className="mt-8">

@@ -49,7 +49,7 @@ function BWDiallerPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-navy-900 py-20 sm:py-28">
+      <section className="cp-hero py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-teal-500/10 border border-teal-500/20 mb-6">

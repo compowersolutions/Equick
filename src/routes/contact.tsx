@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle, Loader2, MessageCircle } from "lucide-react";
 import { submitEnquiry } from "@/lib/api/enquiries.functions";
 import { whatsappLink } from "@/lib/whatsapp";
+import { PageHero } from "@/components/PageHero";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -107,19 +108,11 @@ function ContactPage() {
 
   return (
     <div>
-      {/* Header */}
-      <section className="bg-navy-900 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl font-display">
-            Contact us
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-navy-200">
-            Have a question or need a quote? Reach out and our team will get back to you promptly.
-          </p>
-        </div>
-      </section>
+      <PageHero eyebrow="Get in touch" title="Talk to" highlight="our engineers">
+        Have a question or need a quote? Reach out and our team will get back to you promptly.
+      </PageHero>
 
-      <section className="py-16 sm:py-20 bg-background">
+      <section className="py-16 sm:py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Form */}
@@ -246,6 +239,10 @@ function ContactPage() {
                       </>
                     )}
                   </button>
+                  <p className="text-xs text-muted-foreground">
+                    We use your details only to respond to your enquiry. See our{" "}
+                    <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link>.
+                  </p>
                 </form>
               )}
             </div>
