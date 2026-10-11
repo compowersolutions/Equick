@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 function NotFoundComponent() {
   return (
@@ -126,6 +127,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <WhatsAppButton />
       </div>
     </QueryClientProvider>
   );

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/compower-logo.jpg.asset.json";
+import logo from "@/assets/compower-logo.jpg";
 
 export function Footer() {
   return (
@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <img src={logo.url} alt="ComPower logo" className="h-12 w-auto bg-white rounded p-1" />
+            <img src={logo} alt="ComPower logo" className="h-9 w-auto" />
             <p className="mt-3 text-sm leading-relaxed text-navy-300">
               Simple solutions for complex problems. Your trusted partner for generators, solar, and rectifiers in Botswana.
             </p>
@@ -68,11 +68,11 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
-                <span className="text-sm text-navy-300">+267 72732668</span>
+                <a href="tel:+26772732668" className="text-sm text-navy-300 hover:text-white transition-colors">+267 72732668</a>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
-                <span className="text-sm text-navy-300">highsystembotswana@gmail.com</span>
+                <a href="mailto:highsystembotswana@gmail.com" className="text-sm text-navy-300 hover:text-white transition-colors break-all">highsystembotswana@gmail.com</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />

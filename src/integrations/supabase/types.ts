@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      enquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          interest: string | null
+          message: string
+          name: string
+          phone: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          interest?: string | null
+          message: string
+          name: string
+          phone?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          interest?: string | null
+          message?: string
+          name?: string
+          phone?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       resources: {
         Row: {
           category: Database["public"]["Enums"]["resource_category"]
