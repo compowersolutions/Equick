@@ -15,6 +15,12 @@ export type Testimonial = {
   role?: string;
 };
 
-export const clients: Client[] = [];
+export const clients: Client[] = [
+  { name: "Mascom" },
+  { name: "BoFiNet" },
+  { name: "Nando's" },
+  { name: "1flo.io" },
+  { name: "Excel Stationers" },
+];
 
 export const testimonials: Testimonial[] = [];

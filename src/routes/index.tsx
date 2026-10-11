@@ -253,13 +253,15 @@ function HomePage() {
             {/* Right: stats */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5px", background: C.border, border: `1.5px solid ${C.border}`, borderRadius: "12px", overflow: "hidden" }}>
               {[
-                { number: "15+",  label: "Years in Botswana"  },
-                { number: "20+",  label: "Projects Completed" },
-                { number: "5+",   label: "Expert Engineers"   },
-                { number: "24/7", label: "Support Available"  },
-              ].map(({ number, label }) => (
+                { number: "100+",     label: "Generators Installed"        },
+                { number: "1020", unit: "kVA", label: "Largest Single Installation" },
+                { number: "15+",      label: "Years in Botswana"           },
+                { number: "24/7",     label: "Support Available"           },
+              ].map(({ number, label, unit }: { number: string; label: string; unit?: string }) => (
                 <div key={label} className="cp-stat-box">
-                  <div className="cp-display" style={{ fontWeight: 800, fontSize: "2.75rem", lineHeight: 1, color: C.blue }}>{number}</div>
+                  <div className="cp-display" style={{ fontWeight: 800, fontSize: "2.75rem", lineHeight: 1, color: C.blue, whiteSpace: "nowrap" }}>
+                    {number}{unit && <span style={{ fontSize: "1.1rem", fontWeight: 700, marginLeft: "0.3rem" }}>{unit}</span>}
+                  </div>
                   <div style={{ marginTop: "0.4rem", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.09em", textTransform: "uppercase", color: C.muted }}>{label}</div>
                 </div>
               ))}
