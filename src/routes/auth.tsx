@@ -13,8 +13,6 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
-// ── All Supabase auth logic below is UNCHANGED ────────────────────────────────
-
 const C = {
   dark:    "#0C1018",
   dark2:   "#111827",
@@ -76,14 +74,38 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
+  const [mode, setMode] = useState<"signin" | "signup" | "forgot" | "reset">("signin");
 
-  // ── UNCHANGED ──
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/downloads" });
+    // Arriving from a password-reset email: the link signs the user in
+    // temporarily, so show the "set new password" form instead of redirecting.
+    const isRecovery =
+      new URLSearchParams(window.location.search).has("reset") ||
+      window.location.hash.includes("type=recovery");
+    if (isRecovery) setMode("reset");
+
+    const { data: sub } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") setMode("reset");
     });
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session && !isRecovery) navigate({ to: "/downloads" });
+    });
+    return () => sub.subscription.unsubscribe();
   }, [navigate]);
+
+  function switchMode(next: typeof mode) {
+    setMode(next);
+    setError(null);
+    setInfo(null);
+    setConsent(false);
+  }
+
+  async function goToDashboard(userId: string) {
+    const { data: roleRow } = await supabase
+      .from("user_roles").select("role")
+      .eq("user_id", userId).eq("role", "admin").maybeSingle();
+    navigate({ to: roleRow ? "/admin" : "/downloads" });
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -100,10 +122,18 @@ function AuthPage() {
       if (mode === "signin") {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        const { data: roleRow } = await supabase
-          .from("user_roles").select("role")
-          .eq("user_id", data.user.id).eq("role", "admin").maybeSingle();
-        navigate({ to: roleRow ? "/admin" : "/downloads" });
+        await goToDashboard(data.user.id);
+      } else if (mode === "forgot") {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: window.location.origin + "/auth?reset=1",
+        });
+        if (error) throw error;
+        setInfo("If an account exists for that email, a password reset link is on its way. Check your inbox (and spam folder).");
+      } else if (mode === "reset") {
+        const { data, error } = await supabase.auth.updateUser({ password });
+        if (error) throw error;
+        window.history.replaceState(null, "", "/auth");
+        await goToDashboard(data.user.id);
       } else {
         const { error } = await supabase.auth.signUp({
           email, password,
@@ -145,18 +175,21 @@ function AuthPage() {
           <div style={{ background: C.dark2, border: `1px solid ${C.border}`, borderRadius: "14px", padding: "1.75rem" }}>
 
             <h1 className="cp-display" style={{ fontWeight: 800, fontSize: "2rem", textTransform: "uppercase", color: "#fff", lineHeight: 1 }}>
-              {mode === "signin" ? "Sign in" : "Create account"}
+              {{ signin: "Sign in", signup: "Create account", forgot: "Reset password", reset: "New password" }[mode]}
             </h1>
             <p style={{ marginTop: "0.6rem", fontSize: "0.875rem", color: C.muted, lineHeight: 1.6 }}>
-              {mode === "signin"
-                ? "Sign in to access downloadable resources."
-                : "Create a free account to access our downloadable resources."}
+              {{
+                signin: "Sign in to access downloadable resources.",
+                signup: "Create a free account to access our downloadable resources.",
+                forgot: "Enter your account email and we'll send you a link to set a new password.",
+                reset: "Choose a new password for your account.",
+              }[mode]}
             </p>
 
             <form onSubmit={handleSubmit} style={{ marginTop: "1.25rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
 
               {/* Email */}
-              <div>
+              {mode !== "reset" && <div>
                 <label htmlFor="email" style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "#CBD5E0", marginBottom: "0.5rem", letterSpacing: "0.03em" }}>
                   Email address
                 </label>
@@ -169,23 +202,31 @@ function AuthPage() {
                     placeholder="you@example.com"
                   />
                 </div>
-              </div>
+              </div>}
 
               {/* Password */}
-              <div>
-                <label htmlFor="password" style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "#CBD5E0", marginBottom: "0.5rem", letterSpacing: "0.03em" }}>
-                  Password
-                </label>
+              {mode !== "forgot" && <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.5rem" }}>
+                  <label htmlFor="password" style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "#CBD5E0", letterSpacing: "0.03em" }}>
+                    {mode === "reset" ? "New password" : "Password"}
+                  </label>
+                  {mode === "signin" && (
+                    <button type="button" className="cp-tab-btn" style={{ fontSize: "0.78rem" }} onClick={() => switchMode("forgot")}>
+                      Forgot password?
+                    </button>
+                  )}
+                </div>
                 <div style={{ position: "relative" }}>
                   <Lock size={15} color={C.muted} style={{ position: "absolute", left: "0.75rem", top: "50%", transform: "translateY(-50%)" }} />
                   <input
                     id="password" type="password" required minLength={6}
+                    autoComplete={mode === "signin" ? "current-password" : "new-password"}
                     value={password} onChange={(e) => setPassword(e.target.value)}
                     className="cp-auth-input"
                     placeholder="••••••••"
                   />
                 </div>
-              </div>
+              </div>}
 
               {/* Privacy notice — signup only (UNCHANGED content) */}
               {mode === "signup" && (
@@ -223,7 +264,7 @@ function AuthPage() {
               )}
 
               <button type="submit" disabled={loading || (mode === "signup" && !consent)} className="cp-btn-blue" style={{ marginTop: "0.5rem" }}>
-                {loading ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
+                {loading ? "Please wait…" : { signin: "Sign in", signup: "Create account", forgot: "Send reset link", reset: "Save new password" }[mode]}
                 {!loading && <ArrowRight size={14} />}
               </button>
             </form>
@@ -232,16 +273,20 @@ function AuthPage() {
             <p style={{ marginTop: "1.25rem", textAlign: "center", fontSize: "0.85rem", color: C.muted }}>
               {mode === "signin" ? (
                 <>Need an account?{" "}
-                  <button className="cp-tab-btn" onClick={() => { setMode("signup"); setError(null); setInfo(null); setConsent(false); }}>
+                  <button className="cp-tab-btn" onClick={() => switchMode("signup")}>
                     Sign up free
                   </button>
                 </>
-              ) : (
+              ) : mode === "signup" ? (
                 <>Already have an account?{" "}
-                  <button className="cp-tab-btn" onClick={() => { setMode("signin"); setError(null); setInfo(null); }}>
+                  <button className="cp-tab-btn" onClick={() => switchMode("signin")}>
                     Sign in
                   </button>
                 </>
+              ) : (
+                <button className="cp-tab-btn" onClick={() => switchMode("signin")}>
+                  Back to sign in
+                </button>
               )}
             </p>
 
