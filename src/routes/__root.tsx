@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -14,6 +15,40 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+
+const SITE_URL = "https://compowersolutions.com";
+
+// Business details for Google Search / Maps (schema.org LocalBusiness)
+const BUSINESS_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#business`,
+  name: "ComPower Africa",
+  legalName: "Highsystem Botswana",
+  description:
+    "Industrial generators, solar power systems, rectifiers and business software in Botswana — supply, installation and maintenance.",
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon-512.png`,
+  image: `${SITE_URL}/og-image.jpg`,
+  telephone: "+26772732668",
+  email: "highsystembotswana@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Takatokwane Road, G-West",
+    addressLocality: "Gaborone",
+    addressCountry: "BW",
+  },
+  areaServed: { "@type": "Country", name: "Botswana" },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+  ],
+  sameAs: ["https://wa.me/26772732668"],
+};
 
 function NotFoundComponent() {
   return (
@@ -85,11 +120,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "ComPower Africa" },
       { property: "og:description", content: "Simple solutions for complex problems. Generators, Solar, and Rectifiers in Botswana." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:site_name", content: "ComPower Africa" },
+      { property: "og:locale", content: "en_BW" },
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "ComPower — Simple solutions for complex problems" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "ComPower Africa" },
       { name: "twitter:description", content: "Simple solutions for complex problems. Generators, Solar, and Rectifiers in Botswana." },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
+      { name: "theme-color", content: "#0C1018" },
     ],
     links: [
+      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
@@ -103,10 +150,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const { location } = useRouterState();
+  const canonical = SITE_URL + (location.pathname === "/" ? "/" : location.pathname.replace(/\/$/, ""));
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:url" content={canonical} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_JSON_LD) }}
+        />
       </head>
       <body>
         {children}
