@@ -15,17 +15,30 @@ export const listResources = createServerFn({ method: "GET" }).handler(async () 
 });
 
 export const getResourceDownloadUrl = createServerFn({ method: "POST" })
-  .inputValidator((input: { id: string }) =>
-    z.object({ id: z.string().uuid() }).parse(input),
+  .validator((input: { id: string; password?: string }) =>
+    z.object({ id: z.string().uuid(), password: z.string().optional() }).parse(input),
   )
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: resource, error: resErr } = await supabaseAdmin
       .from("resources")
-      .select("file_path, file_name")
+      .select("file_path, file_name, password_hash")
       .eq("id", data.id)
       .single();
     if (resErr || !resource) throw new Error("Resource not found");
+
+    // Check password if protected
+    if (resource.password_hash) {
+      if (!data.password) throw new Error("PASSWORD_REQUIRED");
+
+      // Hash the provided password and compare
+      const msgBuffer = new TextEncoder().encode(data.password);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const providedHash = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+
+      if (providedHash !== resource.password_hash) throw new Error("INVALID_PASSWORD");
+    }
 
     const { data: signed, error } = await supabaseAdmin.storage
       .from("resources")
@@ -50,7 +63,7 @@ export const checkIsAdmin = createServerFn({ method: "GET" })
 
 export const createResource = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: {
+  .validator((input: {
     title: string;
     description?: string;
     category: string;
@@ -58,6 +71,7 @@ export const createResource = createServerFn({ method: "POST" })
     file_name: string;
     file_size: number;
     file_type: string;
+    password_hash?: string;
   }) =>
     z
       .object({
@@ -68,6 +82,7 @@ export const createResource = createServerFn({ method: "POST" })
         file_name: z.string().min(1).max(255),
         file_size: z.number().int().min(1).max(100 * 1024 * 1024),
         file_type: z.string().min(1).max(150),
+        password_hash: z.string().optional(),
       })
       .parse(input),
   )
@@ -91,6 +106,7 @@ export const createResource = createServerFn({ method: "POST" })
         file_name: data.file_name,
         file_size: data.file_size,
         file_type: data.file_type,
+        password_hash: data.password_hash ?? null,
       })
       .select()
       .single();
@@ -100,7 +116,7 @@ export const createResource = createServerFn({ method: "POST" })
 
 export const deleteResource = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { id: string }) =>
+  .validator((input: { id: string }) =>
     z.object({ id: z.string().uuid() }).parse(input),
   )
   .handler(async ({ data, context }) => {

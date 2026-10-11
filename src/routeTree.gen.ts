@@ -9,17 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RestwisebkRouteImport } from './routes/restwisebk'
+import { Route as RestwiseRouteImport } from './routes/restwise'
+import { Route as RestassureRouteImport } from './routes/restassure'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as IndexbkpRouteImport } from './routes/indexbkp'
+import { Route as DownloadsbkRouteImport } from './routes/downloadsbk'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthbkpRouteImport } from './routes/authbkp'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsMoBillingRouteImport } from './routes/Products/mo-billing'
+import { Route as ProductsBwdiallerRouteImport } from './routes/Products/bwdialler'
 
+const RestwisebkRoute = RestwisebkRouteImport.update({
+  id: '/restwisebk',
+  path: '/restwisebk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestwiseRoute = RestwiseRouteImport.update({
+  id: '/restwise',
+  path: '/restwise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestassureRoute = RestassureRouteImport.update({
+  id: '/restassure',
+  path: '/restassure',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexbkpRoute = IndexbkpRouteImport.update({
+  id: '/indexbkp',
+  path: '/indexbkp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DownloadsbkRoute = DownloadsbkRouteImport.update({
+  id: '/downloadsbk',
+  path: '/downloadsbk',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DownloadsRoute = DownloadsRouteImport.update({
@@ -30,6 +63,11 @@ const DownloadsRoute = DownloadsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthbkpRoute = AuthbkpRouteImport.update({
+  id: '/authbkp',
+  path: '/authbkp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -52,24 +90,50 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsMoBillingRoute = ProductsMoBillingRouteImport.update({
+  id: '/Products/mo-billing',
+  path: '/Products/mo-billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsBwdiallerRoute = ProductsBwdiallerRouteImport.update({
+  id: '/Products/bwdialler',
+  path: '/Products/bwdialler',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/authbkp': typeof AuthbkpRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/downloadsbk': typeof DownloadsbkRoute
+  '/indexbkp': typeof IndexbkpRoute
   '/products': typeof ProductsRoute
+  '/restassure': typeof RestassureRoute
+  '/restwise': typeof RestwiseRoute
+  '/restwisebk': typeof RestwisebkRoute
+  '/Products/bwdialler': typeof ProductsBwdiallerRoute
+  '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/authbkp': typeof AuthbkpRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/downloadsbk': typeof DownloadsbkRoute
+  '/indexbkp': typeof IndexbkpRoute
   '/products': typeof ProductsRoute
+  '/restassure': typeof RestassureRoute
+  '/restwise': typeof RestwiseRoute
+  '/restwisebk': typeof RestwisebkRoute
+  '/Products/bwdialler': typeof ProductsBwdiallerRoute
+  '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +141,17 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/authbkp': typeof AuthbkpRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
+  '/downloadsbk': typeof DownloadsbkRoute
+  '/indexbkp': typeof IndexbkpRoute
   '/products': typeof ProductsRoute
+  '/restassure': typeof RestassureRoute
+  '/restwise': typeof RestwiseRoute
+  '/restwisebk': typeof RestwisebkRoute
+  '/Products/bwdialler': typeof ProductsBwdiallerRoute
+  '/Products/mo-billing': typeof ProductsMoBillingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +160,51 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/auth'
+    | '/authbkp'
     | '/contact'
     | '/downloads'
+    | '/downloadsbk'
+    | '/indexbkp'
     | '/products'
+    | '/restassure'
+    | '/restwise'
+    | '/restwisebk'
+    | '/Products/bwdialler'
+    | '/Products/mo-billing'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/admin'
     | '/auth'
+    | '/authbkp'
     | '/contact'
     | '/downloads'
+    | '/downloadsbk'
+    | '/indexbkp'
     | '/products'
+    | '/restassure'
+    | '/restwise'
+    | '/restwisebk'
+    | '/Products/bwdialler'
+    | '/Products/mo-billing'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/admin'
     | '/auth'
+    | '/authbkp'
     | '/contact'
     | '/downloads'
+    | '/downloadsbk'
+    | '/indexbkp'
     | '/products'
+    | '/restassure'
+    | '/restwise'
+    | '/restwisebk'
+    | '/Products/bwdialler'
+    | '/Products/mo-billing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,18 +212,61 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
+  AuthbkpRoute: typeof AuthbkpRoute
   ContactRoute: typeof ContactRoute
   DownloadsRoute: typeof DownloadsRoute
+  DownloadsbkRoute: typeof DownloadsbkRoute
+  IndexbkpRoute: typeof IndexbkpRoute
   ProductsRoute: typeof ProductsRoute
+  RestassureRoute: typeof RestassureRoute
+  RestwiseRoute: typeof RestwiseRoute
+  RestwisebkRoute: typeof RestwisebkRoute
+  ProductsBwdiallerRoute: typeof ProductsBwdiallerRoute
+  ProductsMoBillingRoute: typeof ProductsMoBillingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/restwisebk': {
+      id: '/restwisebk'
+      path: '/restwisebk'
+      fullPath: '/restwisebk'
+      preLoaderRoute: typeof RestwisebkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restwise': {
+      id: '/restwise'
+      path: '/restwise'
+      fullPath: '/restwise'
+      preLoaderRoute: typeof RestwiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restassure': {
+      id: '/restassure'
+      path: '/restassure'
+      fullPath: '/restassure'
+      preLoaderRoute: typeof RestassureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/indexbkp': {
+      id: '/indexbkp'
+      path: '/indexbkp'
+      fullPath: '/indexbkp'
+      preLoaderRoute: typeof IndexbkpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/downloadsbk': {
+      id: '/downloadsbk'
+      path: '/downloadsbk'
+      fullPath: '/downloadsbk'
+      preLoaderRoute: typeof DownloadsbkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/downloads': {
@@ -142,6 +281,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/authbkp': {
+      id: '/authbkp'
+      path: '/authbkp'
+      fullPath: '/authbkp'
+      preLoaderRoute: typeof AuthbkpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -172,6 +318,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/Products/mo-billing': {
+      id: '/Products/mo-billing'
+      path: '/Products/mo-billing'
+      fullPath: '/Products/mo-billing'
+      preLoaderRoute: typeof ProductsMoBillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/Products/bwdialler': {
+      id: '/Products/bwdialler'
+      path: '/Products/bwdialler'
+      fullPath: '/Products/bwdialler'
+      preLoaderRoute: typeof ProductsBwdiallerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -180,9 +340,17 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
+  AuthbkpRoute: AuthbkpRoute,
   ContactRoute: ContactRoute,
   DownloadsRoute: DownloadsRoute,
+  DownloadsbkRoute: DownloadsbkRoute,
+  IndexbkpRoute: IndexbkpRoute,
   ProductsRoute: ProductsRoute,
+  RestassureRoute: RestassureRoute,
+  RestwiseRoute: RestwiseRoute,
+  RestwisebkRoute: RestwisebkRoute,
+  ProductsBwdiallerRoute: ProductsBwdiallerRoute,
+  ProductsMoBillingRoute: ProductsMoBillingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

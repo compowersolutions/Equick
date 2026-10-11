@@ -3,6 +3,10 @@
   "name": "equick",
   "compatibility_date": "2026-06-12",
   "observability": { "enabled": true },
-  "main": "@tanstack/react-start/server-entry",
-  "compatibility_flags": ["nodejs_compat"]
+  "main": "./dist/server/server.js",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client",
+    "not_found_handling": "single-page-application"
+  }
 }

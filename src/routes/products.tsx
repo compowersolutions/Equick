@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { Zap, Sun, BatteryCharging, CheckCircle, ArrowRight, Download, FileText, Loader2 } from "lucide-react";
-import generatorImg from "@/assets/gen-at-site.jpg.asset.json";
-import solarImg from "@/assets/solar-rts.jpg.asset.json";
-import rectifierImg from "@/assets/rectifier-panel.jpg.asset.json";
+import { Zap, Sun, BatteryCharging, Monitor, Phone, CheckCircle, ArrowRight, Download, FileText, Loader2 } from "lucide-react";
+import generatorImg from "@/assets/gen-at-site.jpg";
+import solarImg from "@/assets/solar-rts.jpg";
+import rectifierImg from "@/assets/rectifier-panel.jpg";
+import restassureImg from "@/assets/SW-Rest-01.jpg";
+import moBillingImg from "@/assets/SW-MO-billing.jpg";
 import { listResources, getResourceDownloadUrl } from "@/lib/api/resources.functions";
 
 
@@ -12,13 +14,16 @@ export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
       { title: "Products — ComPower Africa" },
-      { name: "description", content: "Explore our range of industrial generators, solar power systems, and precision rectifiers." },
+      { name: "description", content: "Explore our range of industrial generators, solar power systems, precision rectifiers, and software solutions including RestWise and MO Billing." },
       { property: "og:title", content: "Products — ComPower Africa" },
-      { property: "og:description", content: "Explore our range of generators, solar systems, and rectifiers." },
+      { property: "og:description", content: "Explore our range of generators, solar systems, rectifiers, RestWise, MO Billing, and BWDialller." },
     ],
   }),
   component: ProductsPage,
 });
+
+const APK_URL =
+  "https://tqxbfsqwikmjobgniois.supabase.co/storage/v1/object/public/Public%20downloads/BWDialer.apk";
 
 const products = [
   {
@@ -27,7 +32,7 @@ const products = [
     icon: <Zap className="h-7 w-7 text-teal-500" />,
     title: "Generators",
     tagline: "Uninterrupted power when it matters most",
-    image: generatorImg.url,
+    image: generatorImg,
     description:
       "Highsystem Botswana supplies and installs industrial-grade diesel and gas generators for prime and standby power applications. From small commercial units to large industrial power plants, our generator solutions ensure your operations never skip a beat.",
     features: [
@@ -38,6 +43,8 @@ const products = [
       "Preventive maintenance contracts",
     ],
     applications: ["Hospitals & clinics", "Data centers & telecoms", "Mining operations", "Commercial buildings"],
+    link: null as string | null,
+    apkUrl: null as string | null,
   },
   {
     id: "solar",
@@ -45,7 +52,7 @@ const products = [
     icon: <Sun className="h-7 w-7 text-teal-500" />,
     title: "Solar Systems",
     tagline: "Harness the power of the Botswana sun",
-    image: solarImg.url,
+    image: solarImg,
     description:
       "Our solar power solutions are engineered to withstand Botswana's harsh climate while delivering maximum energy yield. We design, install, and maintain both grid-tied and off-grid solar systems for homes, businesses, and remote industrial sites.",
     features: [
@@ -56,6 +63,8 @@ const products = [
       "Performance monitoring dashboards",
     ],
     applications: ["Residential homes", "Farms & rural areas", "Off-grid telecom towers", "Commercial buildings"],
+    link: null as string | null,
+    apkUrl: null as string | null,
   },
   {
     id: "rectifiers",
@@ -63,7 +72,7 @@ const products = [
     icon: <BatteryCharging className="h-7 w-7 text-teal-500" />,
     title: "Rectifiers",
     tagline: "Precision power conversion for critical systems",
-    image: rectifierImg.url,
+    image: rectifierImg,
     description:
       "We supply and service industrial rectifiers for DC power applications across telecommunications, data centers, and industrial sites. Our rectifier solutions offer precise voltage and current control with high efficiency and long service life.",
     features: [
@@ -74,6 +83,68 @@ const products = [
       "Custom-built for your application",
     ],
     applications: ["Telecom DC power plants", "Electroplating & anodizing", "Data center backup", "Industrial DC drives"],
+    link: null as string | null,
+    apkUrl: null as string | null,
+  },
+  {
+    id: "restwise",
+    category: "software" as const,
+    icon: <Monitor className="h-7 w-7 text-teal-500" />,
+    title: "RestWise",
+    tagline: "The Silent Manager Behind Every Great Restaurant",
+    image: restassureImg,
+    description:
+      "RestWise is a complete restaurant management platform that streamlines operations from order to payroll. Built for busy kitchens and front-of-house teams, it connects waiters, kitchen staff, and dispatch in real time while giving managers full visibility and control.",
+    features: [
+      "Order processing: waiter to kitchen to dispatch",
+      "Integrated POS till for dine-in and takeaway",
+      "Raw material inventory and stock management",
+      "Payroll and staff management",
+      "Real-time order tracking across all stations",
+    ],
+    applications: ["Restaurants & cafes", "Takeaway outlets", "Multi-branch food chains", "Hotel F&B operations"],
+    link: "/products/restwise" as string | null,
+    apkUrl: null as string | null,
+  },
+  {
+    id: "mo-billing",
+    category: "software" as const,
+    icon: <Monitor className="h-7 w-7 text-teal-500" />,
+    title: "MO Billing",
+    tagline: "Run your business from your pocket",
+    image: moBillingImg,
+    description:
+      "MO Billing is a lightweight yet powerful business billing platform built for small and medium businesses in Botswana. Create professional invoices, delivery notes, and receipts in seconds — even offline.",
+    features: [
+      "Instant professional invoicing",
+      "Delivery notes and payment receipts",
+      "Customer and supplier management",
+      "Custom reports and business insights",
+      "Works offline — no internet required",
+    ],
+    applications: ["Small businesses", "Freelancers", "Retail shops", "Service providers"],
+    link: "/products/mo-billing" as string | null,
+    apkUrl: null as string | null,
+  },
+  {
+    id: "bwdialler",
+    category: "app" as const,
+    icon: <Phone className="h-7 w-7 text-teal-500" />,
+    title: "BWDialller",
+    tagline: "Save Airtime",
+    image: null as string | null,
+    description:
+      "BWDialller saves your airtime by automatically routing every call through the cheapest available option on Mascom, Orange and BeMobile. Take notes while on the call so you never miss an important detail.",
+    features: [
+      "Least cost routing on every call",
+      "Supports Mascom, Orange and BeMobile",
+      "In-call notes — never miss a detail",
+      "Automatic network detection",
+      "Free to download and use",
+    ],
+    applications: ["Everyday callers", "Business users", "Entrepreneurs", "Anyone on a Botswana network"],
+    link: "/products/bwdialler" as string | null,
+    apkUrl: APK_URL,
   },
 ];
 
@@ -144,7 +215,7 @@ function ProductsPage() {
             Our Products
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-navy-200">
-            Three core product lines engineered for reliability, efficiency, and performance in Botswana's demanding environment.
+            Power and software solutions engineered for reliability, efficiency, and performance in Botswana's demanding environment.
           </p>
         </div>
       </section>
@@ -158,19 +229,32 @@ function ProductsPage() {
               className={`grid gap-10 lg:grid-cols-2 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
             >
               <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-navy-100">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                    width={800}
-                    height={500}
-                  />
-                  {product.id === "rectifiers" ? (
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/10 to-transparent" />
-                  ) : null}
-                </div>
+                {product.image ? (
+                  <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-navy-100">
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                      width={800}
+                      height={500}
+                    />
+                    {product.id === "rectifiers" ? (
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/10 to-transparent" />
+                    ) : null}
+                  </div>
+                ) : (
+                  /* BWDialller — no image, use a styled placeholder */
+                  <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-navy-900 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="mx-auto h-20 w-20 rounded-full bg-teal-500/10 border border-teal-500/20 flex items-center justify-center mb-4">
+                        <Phone className="h-10 w-10 text-teal-400" />
+                      </div>
+                      <p className="text-2xl font-bold text-white font-display">BWDialller</p>
+                      <p className="text-teal-400 text-sm mt-1">Save Airtime</p>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
                 <div className="flex items-center gap-3 mb-4">
@@ -210,7 +294,30 @@ function ProductsPage() {
                     ))}
                   </div>
                 </div>
-                <ProductDownloads category={product.category} />
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {product.link && (
+                    <Link
+                      to={product.link}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:text-teal-700"
+                    >
+                      View Details
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
+                  {product.apkUrl && (
+                    <a
+                      href={product.apkUrl}
+                      download="BWDialller.apk"
+                      className="inline-flex items-center gap-2 rounded-md bg-teal-500 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-600 transition-colors"
+                    >
+                      <Download className="h-4 w-4" />
+                      Download APK
+                    </a>
+                  )}
+                </div>
+                {(product.category === "generator" || product.category === "solar" || product.category === "rectifier") && (
+                  <ProductDownloads category={product.category} />
+                )}
               </div>
             </div>
           ))}
