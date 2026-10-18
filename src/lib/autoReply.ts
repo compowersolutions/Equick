@@ -50,7 +50,7 @@ export const replyTemplates: Record<string, ReplyTemplate> = {
   software: {
     subject: "Your software enquiry — ComPower Africa",
     paragraphs: [
-      "Thank you for your interest in our software. RestWise manages restaurant orders, POS, stock and payroll; MO Billing handles invoices, delivery notes and receipts from your phone; BW Dialer saves airtime on every call.",
+      "Thank you for your interest in our software. RestWise manages restaurant orders, POS, stock and payroll; MO Billing handles invoices, delivery notes and receipts from your phone; Mogala saves airtime on every call.",
       "Tell us a little about your business and we'll arrange a demo. Product details: https://compowersolutions.com/products",
     ],
     attach: [],

@@ -29,7 +29,7 @@ export const Route = createFileRoute("/products")({
       { title: "Products — ComPower Africa" },
       { name: "description", content: "Explore our range of industrial generators, solar power systems, precision rectifiers, and software solutions including RestWise and MO Billing." },
       { property: "og:title", content: "Products — ComPower Africa" },
-      { property: "og:description", content: "Explore our range of generators, solar systems, rectifiers, RestWise, MO Billing, and BW Dialer." },
+      { property: "og:description", content: "Explore our range of generators, solar systems, rectifiers, RestWise, MO Billing, and Mogala." },
     ],
   }),
   component: ProductsPage,
@@ -143,11 +143,11 @@ const products = [
     id: "bwdialler",
     category: "app" as const,
     icon: <Phone className="h-7 w-7 text-teal-500" />,
-    title: "BW Dialer",
+    title: "Mogala",
     tagline: "Save Airtime",
     image: null as string | null,
     description:
-      "BW Dialer saves your airtime by automatically routing every call through the cheapest available option on Mascom, Orange and BeMobile. Take notes while on the call so you never miss an important detail.",
+      "Mogala saves your airtime by automatically routing every call through the cheapest available option on Mascom, Orange and BeMobile. Take notes while on the call so you never miss an important detail.",
     features: [
       "Least cost routing on every call",
       "Supports Mascom, Orange and BeMobile",
@@ -267,13 +267,13 @@ function ProductsPage() {
                     ) : null}
                   </div>
                 ) : (
-                  /* BW Dialer — no image, use a styled placeholder */
+                  /* Mogala — no image, use a styled placeholder */
                   <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-navy-900 flex items-center justify-center">
                     <div className="text-center">
                       <div className="mx-auto h-20 w-20 rounded-full bg-teal-500/10 border border-teal-500/20 flex items-center justify-center mb-4">
                         <Phone className="h-10 w-10 text-teal-400" />
                       </div>
-                      <p className="text-2xl font-bold uppercase text-white font-display">BW Dialer</p>
+                      <p className="text-2xl font-bold uppercase text-white font-display">Mogala</p>
                       <p className="text-teal-400 text-sm mt-1">Save Airtime</p>
                     </div>
                   </div>
@@ -338,7 +338,7 @@ function ProductsPage() {
                   {product.apkUrl && (
                     <a
                       href={product.apkUrl}
-                      download="BWDialer.apk"
+                      download="Mogala.apk"
                       className="inline-flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700 transition-colors"
                     >
                       <Download className="h-4 w-4" />

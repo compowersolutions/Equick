@@ -62,7 +62,7 @@ const interestLabels: Record<string, string> = {
   generators: "Generators",
   solar: "Solar Systems",
   rectifiers: "Rectifiers",
-  software: "Software (RestWise / MO Billing / BW Dialer)",
+  software: "Software (RestWise / MO Billing / Mogala)",
   maintenance: "Maintenance / service contract",
   multiple: "Multiple products",
   other: "Other / Not sure",
