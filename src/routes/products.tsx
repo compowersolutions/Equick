@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { Zap, Sun, BatteryCharging, Monitor, Phone, CheckCircle, ArrowRight, Download, FileText, Loader2 } from "lucide-react";
+import { Zap, Sun, BatteryCharging, Monitor, Phone, CheckCircle, ArrowRight, Download, FileText, Loader2, Activity } from "lucide-react";
 import generatorImg from "@/assets/gen-at-site.webp";
 import solarImg from "@/assets/solar-rts.webp";
 import rectifierImg from "@/assets/rectifier-panel.webp";
@@ -11,9 +11,12 @@ import generatorSm from "@/assets/gen-at-site-800.webp";
 import solarSm from "@/assets/solar-rts-800.webp";
 import rectifierSm from "@/assets/rectifier-panel-800.webp";
 import restassureSm from "@/assets/SW-Rest-01-800.webp";
+import genwiseImg from "@/assets/genwise-card.webp";
+import genwiseSm from "@/assets/genwise-card-800.webp";
 
 // Phone-sized versions of the larger product photos
 const smallImages: Record<string, string> = {
+  [genwiseImg]: genwiseSm,
   [generatorImg]: generatorSm,
   [solarImg]: solarSm,
   [rectifierImg]: rectifierSm,
@@ -27,7 +30,7 @@ export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
       { title: "Products — ComPower Africa" },
-      { name: "description", content: "Explore our range of industrial generators, solar power systems, precision rectifiers, and software solutions including RestWise and MO Billing." },
+      { name: "description", content: "Explore our range of industrial generators, GenWise remote generator monitoring, solar power systems, precision rectifiers, and software solutions including RestWise and MO Billing." },
       { property: "og:title", content: "Products — ComPower Africa" },
       { property: "og:description", content: "Explore our range of generators, solar systems, rectifiers, RestWise, MO Billing, and Mogala." },
     ],
@@ -47,7 +50,7 @@ const products = [
     tagline: "Uninterrupted power when it matters most",
     image: generatorImg,
     description:
-      "Highsystem Botswana supplies and installs industrial-grade diesel and gas generators for prime and standby power applications. From small commercial units to large industrial power plants, our generator solutions ensure your operations never skip a beat.",
+      "ComPower Africa supplies and installs industrial-grade diesel and gas generators for prime and standby power applications. From small commercial units to large industrial power plants, our generator solutions ensure your operations never skip a beat.",
     features: [
       "Diesel & gas generator sets (10kVA – 3000kVA)",
       "Automatic transfer switches (ATS)",
@@ -57,6 +60,26 @@ const products = [
     ],
     applications: ["Hospitals & clinics", "Data centers & telecoms", "Mining operations", "Commercial buildings"],
     link: null as string | null,
+    apkUrl: null as string | null,
+  },
+  {
+    id: "genwise",
+    category: "software" as const,
+    icon: <Activity className="h-7 w-7 text-teal-500" />,
+    title: "GenWise",
+    tagline: "Know what every generator is doing, from anywhere",
+    image: genwiseImg,
+    description:
+      "GenWise monitors and controls your standby generators remotely. A GenWise Gateway on each site reads the DSE controller and sends live readings, alarms and history to the GenWise website and your phone, and carries out remote start and stop. It is built for sites where the mobile network is not always reliable, and suits fleets moving on from the DSE890.",
+    features: [
+      "Live engine, generator and mains readings",
+      "Alarm notifications to your phone and email",
+      "Remote start, stop and mode changes, with confirmation",
+      "Two-SIM 4G gateway that recovers its own connection",
+      "Works with DSE controllers, including DSE890 MKII sites",
+    ],
+    applications: ["Telecom sites", "Hospitals & clinics", "Commercial buildings", "Remote and unmanned sites"],
+    link: "/genwise" as string | null,
     apkUrl: null as string | null,
   },
   {

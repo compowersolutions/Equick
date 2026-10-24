@@ -7,6 +7,7 @@ import rectifierSm from "@/assets/rectifier-panel-800.webp";
 import heroXs from "@/assets/gen-at-site-480.webp";
 import solarXs from "@/assets/solar-rts-480.webp";
 import rectifierXs from "@/assets/rectifier-panel-480.webp";
+import genwiseImg from "@/assets/genwise-fleet-800.webp";
 import { ProjectsTeaser, ClientsStrip, Testimonials } from "@/components/HomeSections";
 import { FaqSection } from "@/components/FaqSection";
 
@@ -191,7 +192,7 @@ function HomePage() {
             </h1>
 
             <p style={{ marginTop: "1.75rem", fontSize: "clamp(1rem,1.5vw,1.125rem)", color: C.muted, maxWidth: "46ch", lineHeight: 1.8 }}>
-              Highsystem Botswana delivers industrial generators, solar power systems, and precision rectifiers designed to keep your operations running without interruption.
+              ComPower Africa delivers industrial generators, solar power systems, and precision rectifiers designed to keep your operations running without interruption.
             </p>
 
             <div className="cp-hero-actions" style={{ marginTop: "2.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
@@ -234,16 +235,46 @@ function HomePage() {
           </div>
         </section>
 
+        {/* ── GENWISE ── */}
+        <section className="cp-on-dark" style={{ background: C.dark, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 70% at 75% 50%, rgba(74,114,182,0.12) 0%, transparent 65%)", pointerEvents: "none" }} />
+          <div className="cp-why-grid" style={{ position: "relative", maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "3.5rem", alignItems: "center" }}>
+            <div>
+              <span className="cp-eyebrow" style={{ color: "#7D9DE0" }}>New · Remote monitoring</span>
+              <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.71rem,3.8vw,2.66rem)", lineHeight: 1, color: "#fff" }}>
+                <span style={{ color: "#7D9DE0" }}>Gen</span>Wise
+              </h2>
+              <p style={{ marginTop: "0.9rem", fontSize: "1.05rem", fontWeight: 600, color: "#fff" }}>
+                Know what every generator is doing, from anywhere.
+              </p>
+              <p style={{ marginTop: "0.75rem", color: C.muted, fontSize: "0.9rem", lineHeight: 1.8, maxWidth: "46ch" }}>
+                Live readings, alarms on your phone and remote start and stop for your generators, through a 4G gateway that keeps its connection when the network does not.
+              </p>
+              <div style={{ marginTop: "1.5rem", display: "flex", gap: "0.9rem", flexWrap: "wrap" }}>
+                <Link to="/genwise" className="cp-btn-blue" style={{ background: "#4A72B6" }}>
+                  Explore GenWise <ArrowRight size={14} />
+                </Link>
+                <Link to="/genwise" hash="dse890" className="cp-btn-outline">
+                  Moving from DSE890?
+                </Link>
+              </div>
+            </div>
+            <Link to="/genwise" aria-label="See GenWise" style={{ display: "block", borderRadius: "12px", overflow: "hidden", border: `1px solid ${C.border}`, boxShadow: "0 20px 60px rgba(0,0,0,0.35)" }}>
+              <img src={genwiseImg} alt="GenWise fleet overview with generator status, load, fuel and battery for four sites" loading="lazy" width={800} height={367} style={{ width: "100%", height: "auto", display: "block" }} />
+            </Link>
+          </div>
+        </section>
+
         <ClientsStrip />
         <ProjectsTeaser />
 
-        {/* ── WHY HIGHSYSTEM ── */}
+        {/* ── WHY COMPOWER ── */}
         <section className="cp-on-dark" style={{ background: C.dark2, padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem)" }}>
           <div className="cp-why-grid" style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
 
             {/* Left */}
             <div>
-              <span className="cp-eyebrow">Why Highsystem</span>
+              <span className="cp-eyebrow">Why ComPower</span>
               <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.52rem,3.04vw,2.28rem)", textTransform: "uppercase", lineHeight: 1.05, color: "#fff" }}>
                 Local expertise.<br />No compromises.
               </h2>

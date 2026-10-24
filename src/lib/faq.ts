@@ -22,6 +22,10 @@ export const faqs: Faq[] = [
     a: "Yes, when it is fitted with an automatic transfer switch (ATS). The ATS detects the outage, starts the generator and switches your load over, then switches back when mains power returns.",
   },
   {
+    q: "Can I monitor and control my generator remotely?",
+    a: "Yes. With GenWise, a 4G gateway on site sends live readings and alarms from your generator's DSE controller to our website and your phone, and lets authorised staff start and stop it remotely. It also works for sites currently using DSE890 gateways.",
+  },
+  {
     q: "Should I choose solar, a generator, or both?",
     a: "Solar cuts your electricity bills during the day, while a generator gives dependable backup at any hour. Many clients combine the two: solar with batteries for everyday use and a generator for long outages or heavy loads. We'll recommend the best mix for your site and budget.",
   },

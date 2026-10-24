@@ -111,7 +111,7 @@ export function renderReply(name: string, message: string, t: ReplyTemplate, att
         ? `<p style="font-size:13px;color:#64748B">Attached: ${attachedNames.map(escapeHtml).join(", ")}</p>`
         : ""
     }
-    <p>Kind regards,<br><b>ComPower Africa</b> — Highsystem Botswana<br>
+    <p>Kind regards,<br><b>ComPower Africa</b><br>
     Takatokwane Road, G-West, Gaborone<br>
     +267 72732668 · <a href="https://compowersolutions.com" style="color:#2D63A8">compowersolutions.com</a></p>
     <hr style="border:0;border-top:1px solid #E2E8F0;margin:20px 0">

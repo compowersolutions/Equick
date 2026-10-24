@@ -11,7 +11,7 @@ export const Route = createFileRoute("/projects")({
       {
         name: "description",
         content:
-          "Generator, solar, electrical and borehole installations completed by ComPower (Highsystem Botswana) across Botswana.",
+          "Generator, solar, electrical and borehole installations completed by ComPower Africa across Botswana.",
       },
       { property: "og:title", content: "Our Work — ComPower Africa" },
       { property: "og:description", content: "Generator, solar and electrical installations across Botswana." },

@@ -7,6 +7,7 @@ import logo from "@/assets/compower-logo.webp";
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/products", label: "Products" },
+  { to: "/genwise", label: "GenWise" },
   { to: "/services", label: "Services" },
   { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
@@ -44,7 +45,7 @@ export function Navbar() {
             // Insert the Resources dropdown right after "Projects".
             return (
               <Fragment key={link.to}>
-                {i === 4 && (
+                {i === 5 && (
                   <div
                     key="resources"
                     className="relative"
@@ -134,7 +135,7 @@ export function Navbar() {
               const isActive = currentPath === link.to;
               return (
                 <Fragment key={link.to}>
-                  {i === 4 && (
+                  {i === 5 && (
                     <div key="resources-mobile">
                       <button
                         onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}

@@ -26,6 +26,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/genwise" className="text-sm text-navy-300 hover:text-white transition-colors">
+                  GenWise Monitoring
+                </Link>
+              </li>
+              <li>
                 <Link to="/products" hash="solar" className="text-sm text-navy-300 hover:text-white transition-colors">
                   Solar Systems
                 </Link>
@@ -99,7 +104,7 @@ export function Footer() {
 
         <div className="mt-10 border-t border-navy-700 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-navy-300">
-            &copy; {new Date().getFullYear()} Highsystem Botswana. All rights reserved.
+            &copy; {new Date().getFullYear()} ComPower Africa. All rights reserved.
           </p>
           <div className="flex gap-4 text-xs text-navy-300">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

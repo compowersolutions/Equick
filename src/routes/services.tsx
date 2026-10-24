@@ -12,7 +12,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Generator, solar and rectifier installation, preventive maintenance contracts and emergency call-outs across Botswana from ComPower (Highsystem Botswana).",
+          "Generator, solar and rectifier installation, preventive maintenance contracts and emergency call-outs across Botswana from ComPower Africa.",
       },
       { property: "og:title", content: "Services — Installation, Maintenance & Repairs | ComPower Africa" },
       { property: "og:description", content: "Keep your power running: installation, maintenance contracts and emergency call-outs." },

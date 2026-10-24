@@ -108,7 +108,7 @@ function AboutPage() {
           <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto" }}>
             <span className="cp-eyebrow">Who we are</span>
             <h1 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.9rem,4.56vw,3.42rem)", lineHeight: 0.95, textTransform: "uppercase", color: "#fff", marginTop: "0.5rem", maxWidth: "18ch" }}>
-              About Highsystem<br /><span style={{ color: C.blue }}>Botswana</span>
+              About ComPower<br /><span style={{ color: C.blue }}>Africa</span>
             </h1>
             <p style={{ marginTop: "1rem", color: C.muted, fontSize: "clamp(1rem,1.5vw,1.1rem)", maxWidth: "52ch", lineHeight: 1.8 }}>
               Powering Botswana with simple, reliable solutions for complex energy challenges.
@@ -130,7 +130,7 @@ function AboutPage() {
                 Built for<br />Botswana
               </h2>
               <div style={{ marginTop: "0.75rem", display: "flex", flexDirection: "column", gap: "1rem", color: C.textSm, lineHeight: 1.8, fontSize: "0.925rem" }}>
-                <p>Highsystem Botswana was founded on a simple belief: that businesses and communities in Botswana deserve reliable, world-class power solutions without unnecessary complexity.</p>
+                <p>ComPower Africa was founded on a simple belief: that businesses and communities in Botswana deserve reliable, world-class power solutions without unnecessary complexity.</p>
                 <p>With years of experience in the power industry, our team understands the unique challenges of operating in Southern Africa — from extreme temperatures and remote locations to the critical need for backup power during grid instability.</p>
                 <p>We specialize in three core areas: industrial generators, solar power systems, and precision rectifiers. Each solution is tailored to the client's environment, budget, and long-term operational goals.</p>
               </div>
@@ -163,7 +163,7 @@ function AboutPage() {
                 Four principles.<br />One standard.
               </h2>
               <p style={{ marginTop: "1rem", color: C.muted, maxWidth: "44ch", margin: "1rem auto 0", fontSize: "0.9rem", lineHeight: 1.75 }}>
-                Four principles guide everything we do at Highsystem Botswana.
+                Four principles guide everything we do at ComPower Africa.
               </p>
             </div>
 

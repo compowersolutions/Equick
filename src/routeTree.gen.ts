@@ -16,6 +16,7 @@ import { Route as RestassureRouteImport } from './routes/restassure'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as GenwiseRouteImport } from './routes/genwise'
 import { Route as GeneratorSizingRouteImport } from './routes/generator-sizing'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -59,6 +60,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GenwiseRoute = GenwiseRouteImport.update({
+  id: '/genwise',
+  path: '/genwise',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GeneratorSizingRoute = GeneratorSizingRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
   '/generator-sizing': typeof GeneratorSizingRoute
+  '/genwise': typeof GenwiseRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/projects': typeof ProjectsRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
   '/generator-sizing': typeof GeneratorSizingRoute
+  '/genwise': typeof GenwiseRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/projects': typeof ProjectsRoute
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
   '/generator-sizing': typeof GeneratorSizingRoute
+  '/genwise': typeof GenwiseRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/projects': typeof ProjectsRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/downloads'
     | '/generator-sizing'
+    | '/genwise'
     | '/privacy'
     | '/products'
     | '/projects'
@@ -190,6 +200,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/downloads'
     | '/generator-sizing'
+    | '/genwise'
     | '/privacy'
     | '/products'
     | '/projects'
@@ -208,6 +219,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/downloads'
     | '/generator-sizing'
+    | '/genwise'
     | '/privacy'
     | '/products'
     | '/projects'
@@ -227,6 +239,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DownloadsRoute: typeof DownloadsRoute
   GeneratorSizingRoute: typeof GeneratorSizingRoute
+  GenwiseRoute: typeof GenwiseRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
   ProjectsRoute: typeof ProjectsRoute
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/genwise': {
+      id: '/genwise'
+      path: '/genwise'
+      fullPath: '/genwise'
+      preLoaderRoute: typeof GenwiseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/generator-sizing': {
@@ -363,6 +383,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DownloadsRoute: DownloadsRoute,
   GeneratorSizingRoute: GeneratorSizingRoute,
+  GenwiseRoute: GenwiseRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
   ProjectsRoute: ProjectsRoute,

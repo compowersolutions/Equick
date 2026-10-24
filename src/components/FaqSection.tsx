@@ -35,9 +35,13 @@ export function FaqSection() {
                 <ChevronDown className="h-4 w-4 shrink-0 text-navy-400 transition-transform group-open:rotate-180" />
               </summary>
               <p className="-mt-1 pb-4 text-sm leading-relaxed text-navy-500">
-                {f.a.split(/(generator size calculator)/).map((part, i) =>
-                  part === "generator size calculator" ? (
-                    <Link key={i} to="/generator-sizing" className="font-medium text-brand underline underline-offset-2">
+                {f.a.split(/(generator size calculator|GenWise)/).map((part, i) =>
+                  part === "generator size calculator" || part === "GenWise" ? (
+                    <Link
+                      key={i}
+                      to={part === "GenWise" ? "/genwise" : "/generator-sizing"}
+                      className="font-medium text-brand underline underline-offset-2"
+                    >
                       {part}
                     </Link>
                   ) : (
