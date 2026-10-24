@@ -8,6 +8,7 @@ import heroXs from "@/assets/gen-at-site-480.webp";
 import solarXs from "@/assets/solar-rts-480.webp";
 import rectifierXs from "@/assets/rectifier-panel-480.webp";
 import genwiseImg from "@/assets/genwise-fleet-800.webp";
+import genwiseLogo from "@/assets/genwise-logo-stacked-dark.svg";
 import { ProjectsTeaser, ClientsStrip, Testimonials } from "@/components/HomeSections";
 import { FaqSection } from "@/components/FaqSection";
 
@@ -241,8 +242,8 @@ function HomePage() {
           <div className="cp-why-grid" style={{ position: "relative", maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "3.5rem", alignItems: "center" }}>
             <div>
               <span className="cp-eyebrow" style={{ color: "#7D9DE0" }}>New · Remote monitoring</span>
-              <h2 className="cp-display" style={{ fontWeight: 900, fontSize: "clamp(1.71rem,3.8vw,2.66rem)", lineHeight: 1, color: "#fff" }}>
-                <span style={{ color: "#7D9DE0" }}>Gen</span>Wise
+              <h2 style={{ margin: 0 }}>
+                <img src={genwiseLogo} alt="GenWise" loading="lazy" style={{ height: "clamp(70px, 8vw, 96px)", width: "auto", display: "block" }} />
               </h2>
               <p style={{ marginTop: "0.9rem", fontSize: "1.05rem", fontWeight: 600, color: "#fff" }}>
                 Know what every generator is doing, from anywhere.

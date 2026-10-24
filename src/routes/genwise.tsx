@@ -8,6 +8,7 @@ import siteImg from "@/assets/genwise-site.webp";
 import historyImg from "@/assets/genwise-history.webp";
 import phoneFleetImg from "@/assets/genwise-phone-fleet.webp";
 import phoneSiteImg from "@/assets/genwise-phone-site.webp";
+import logoImg from "@/assets/genwise-logo-stacked-dark.svg";
 
 export const Route = createFileRoute("/genwise")({
   head: () => ({
@@ -175,8 +176,8 @@ function GenWisePage() {
               <Activity size={13} color={C.blueL} />
               <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: C.blueL }}>Generator monitoring</span>
             </div>
-            <h1 className="gw-display" style={{ fontWeight: 900, fontSize: "clamp(2.2rem,5vw,3.6rem)", lineHeight: 0.95, color: "#fff" }}>
-              <span style={{ color: C.blueL }}>Gen</span>Wise
+            <h1 style={{ margin: 0 }}>
+              <img src={logoImg} alt="GenWise" style={{ height: "clamp(84px, 11vw, 132px)", width: "auto", display: "block" }} />
             </h1>
             <p style={{ marginTop: "1rem", fontSize: "clamp(1.05rem,2vw,1.35rem)", fontWeight: 600, color: "#fff" }}>
               Know what every generator is doing, from anywhere.
