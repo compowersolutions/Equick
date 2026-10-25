@@ -259,7 +259,7 @@ function GenWisePage() {
               <div className="gw-shot"><img src={siteImg} alt="GenWise site page with engine, generator and mains readings and the remote control panel" loading="lazy" width={1600} height={616} /></div>
             </div>
             <div className="gw-split">
-              <div className="gw-shot"><img src={historyImg} alt="GenWise history charts of generator power, engine speed, fuel, battery, coolant temperature and mains voltage" loading="lazy" width={1600} height={593} /></div>
+              <div className="gw-shot"><img src={historyImg} alt="GenWise history charts of generator power, engine speed, fuel, battery, coolant temperature and mains voltage" loading="lazy" width={1600} height={556} /></div>
               <div>
                 <span className="gw-eyebrow">History</span>
                 <h2 className="gw-display" style={{ fontWeight: 900, fontSize: "clamp(1.4rem,2.6vw,2rem)", textTransform: "uppercase", color: "#fff", lineHeight: 1.05, marginTop: "0.6rem" }}>
