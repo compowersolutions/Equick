@@ -96,7 +96,7 @@ const STYLES = `
 const features = [
   { icon: <Activity size={22} color={C.blueL} />, title: "Live readings", text: "Engine speed, oil pressure, temperatures, fuel, battery, load, voltages and currents, updated every few seconds." },
   { icon: <BellRing size={22} color={C.blueL} />, title: "Alarms on your phone", text: "Shutdowns, warnings and lost communication arrive as phone notifications and email, with the full alarm history kept." },
-  { icon: <Power size={22} color={C.blueL} />, title: "Remote control", text: "Start, stop, Auto and Manual from the website or phone. Each command needs typed confirmation and is recorded with who sent it." },
+  { icon: <Power size={22} color={C.blueL} />, title: "Remote control", text: "Start, stop, Auto and Manual from the website or phone. A remote start must be confirmed by typing the site name, and every command is recorded with who sent it." },
   { icon: <History size={22} color={C.blueL} />, title: "History and trends", text: "Charts of load, fuel, battery, temperature and mains voltage from the last hour up to 30 days, plus run hours, starts and kWh." },
   { icon: <Signal size={22} color={C.blueL} />, title: "Built for patchy networks", text: "Two SIM cards, automatic recovery when the connection hangs, and readings stored on site during an outage, then sent." },
   { icon: <ShieldCheck size={22} color={C.blueL} />, title: "Secure by design", text: "Encrypted connections end to end, a separate login for every gateway, and viewer, operator and administrator roles." },
@@ -136,7 +136,7 @@ const faqs = [
   },
   {
     q: "Is remote start and stop safe?",
-    a: "Only users with operator rights can send commands, every start, stop or mode change must be confirmed by typing the site name, and each command is recorded with the user and time. The generator's own controller still applies all its protections.",
+    a: "Only users with operator rights can send commands, a remote start must be confirmed by typing the site name, and each command is recorded with the user and time. The generator's own controller still applies all its protections.",
   },
   {
     q: "Is there a phone app?",
