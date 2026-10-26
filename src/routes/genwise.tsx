@@ -188,6 +188,7 @@ function GenWisePage() {
             <div className="gw-hero-actions" style={{ marginTop: "2rem", display: "flex", gap: "0.9rem", flexWrap: "wrap" }}>
               <Link to="/contact" className="gw-btn">Request a demo <ArrowRight size={14} /></Link>
               <a href="#dse890" className="gw-btn-outline">Moving from DSE890?</a>
+              <a href="https://genwise.live" className="gw-btn-outline">Sign in to GenWise</a>
             </div>
             <div className="gw-shot" style={{ marginTop: "2.75rem" }}>
               <img src={fleetImg} alt="GenWise fleet overview showing four generator sites with status, load, fuel and battery" width={1600} height={733} />
@@ -369,6 +370,7 @@ function GenWisePage() {
             </p>
             <div style={{ marginTop: "2rem", display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
               <Link to="/contact" className="gw-btn">Request a demo <ArrowRight size={14} /></Link>
+              <a href="https://genwise.live" className="gw-btn-outline">Sign in to GenWise</a>
               <Link to="/products" className="gw-btn-outline">All products</Link>
             </div>
           </div>
