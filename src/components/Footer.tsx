@@ -31,6 +31,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <a href="https://genwise.live" className="text-sm text-navy-300 hover:text-white transition-colors">
+                  GenWise sign in (genwise.live)
+                </a>
+              </li>
+              <li>
                 <Link to="/products" hash="solar" className="text-sm text-navy-300 hover:text-white transition-colors">
                   Solar Systems
                 </Link>
