@@ -14,9 +14,19 @@ const navLinks = [
   { to: "/contact", label: "Contact" },
 ];
 
-const resourceLinks = [
+type ResourceLink = {
+  to: string;
+  label: string;
+  external: boolean;
+  /** Set for direct file downloads: the file name the browser saves */
+  download?: string;
+};
+
+const resourceLinks: ResourceLink[] = [
   { to: "/generator-sizing", label: "Generator Size Calculator", external: false },
   { to: "/downloads", label: "Downloads", external: false },
+  // Windows tool: finds a battery BMS's serial settings and reads live data
+  { to: "/downloads/BMS-Wise.exe", label: "BMS-Wise", external: false, download: "BMS-Wise.exe" },
   { to: "https://bpc.compowerafrica.com", label: "BPC Tariff Calculator", external: true },
 ];
 
@@ -66,12 +76,13 @@ export function Navbar() {
                     {resourcesOpen && (
                       <div className="absolute left-0 top-full w-56 rounded-md border border-border bg-background py-1 shadow-md">
                         {resourceLinks.map((item) =>
-                          item.external ? (
+                          item.external || item.download ? (
                             <a
                               key={item.to}
                               href={item.to}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                              {...(item.download
+                                ? { download: item.download }
+                                : { target: "_blank", rel: "noopener noreferrer" })}
                               className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted"
                             >
                               {item.label}
@@ -153,12 +164,13 @@ export function Navbar() {
                       {mobileResourcesOpen && (
                         <div className="flex flex-col gap-1 pl-4">
                           {resourceLinks.map((item) =>
-                            item.external ? (
+                            item.external || item.download ? (
                               <a
                                 key={item.to}
                                 href={item.to}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                {...(item.download
+                                  ? { download: item.download }
+                                  : { target: "_blank", rel: "noopener noreferrer" })}
                                 onClick={() => setOpen(false)}
                                 className="px-3 py-2.5 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted"
                               >
